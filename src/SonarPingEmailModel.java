@@ -66,6 +66,7 @@ public class SonarPingEmailModel {
 			System.out.println("Sent message successfully....");
 
 		} catch (MessagingException e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}

@@ -70,11 +70,30 @@ public class SonarPingModel {
 		@Override
 		public void serialEvent(SerialPortEvent event) {
 			try{
-				if(event.getEventType() == SerialPortEvent.DATA_AVAILABLE){
-					JOptionPane.showMessageDialog(null, input.readLine());
+				
+				if(event.getNewValue()){
+					
+					System.out.println("Joshua");
+					try{
+						Thread.sleep(30000);
+					}
+					
+					catch(Exception ex){
+						
+					}
+					 
+						
+						
+				}else if(event.getEventType() == SerialPortEvent.OUTPUT_BUFFER_EMPTY){
+					System.out.println("asdf");
+
 				}
+				
+				
 			}catch(Exception ex){
-				JOptionPane.showMessageDialog(null, ex.getMessage());
+				ex.printStackTrace();
+				
+				//JOptionPane.showMessageDialog(null, ex.getMessage());
 			}
 		}
 	}
