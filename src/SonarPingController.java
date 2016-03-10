@@ -25,13 +25,13 @@ public class SonarPingController {
 	public class SystemArmingListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			if(arg0.getSource() == sonarPingView.ArmJButton){
-				//JOptionPane.showMessageDialog(sonarPingView, "Activated");
+
 				sonarPingModel.toggle(1);
 				sonarPingView.colorPanel.setBackground(Color.RED);
 				
 				
 			}else if(arg0.getSource() == sonarPingView.DisarmJButton){
-				//JOptionPane.showMessageDialog(sonarPingView, "Deactivated");
+				
 				sonarPingView.colorPanel.setBackground(Color.GREEN);
 				sonarPingModel.toggle(0);
 			}

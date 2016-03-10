@@ -7,7 +7,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class SonarPingEmailModel {
+public class SonarPingEmailModel implements Runnable {
 	private String to;
 	private String from;
 	private String username;
@@ -16,16 +16,16 @@ public class SonarPingEmailModel {
 	private Properties props;
 	private Session session;
 
-	public SonarPingEmailModel(String to, String from, String username, String password, String hoste){
+	public SonarPingEmailModel(String to, String from, String username, String password){
 		this.to = to;
 		this.from = from;
 		this.username = username;
 		this.password = password;
-		this.host = hoste;
+		
 		this.props = new Properties();
 		this.props.put("mail.smtp.auth", "true");
 		this.props.put("mail.smtp.starttls.enable", "true");
-		this.props.put("mail.smtp.host", host);
+		this.props.put("mail.smtp.host", "smtp.gmail.com");
 		this.props.put("mail.smtp.port", "587");
 	}
 	
@@ -38,7 +38,7 @@ public class SonarPingEmailModel {
 		});
 	}
 
-	public void fire(){
+	public void run(){
 		try {
 			// Create a default MimeMessage object.
 			Message message = new MimeMessage(session);

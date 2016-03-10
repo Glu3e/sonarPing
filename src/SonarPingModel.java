@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
@@ -20,6 +21,7 @@ public class SonarPingModel {
 		try{
 			this.basicPort = CommPortIdentifier.getPortIdentifier(comPortName);
 			this.port = (SerialPort) this.basicPort.open("", 1);
+			
 			
 			port.setSerialPortParams(9600, 
 					SerialPort.DATABITS_8, 
@@ -68,32 +70,41 @@ public class SonarPingModel {
 	
 	public static class Serial implements SerialPortEventListener{
 		@Override
-		public void serialEvent(SerialPortEvent event) {
+		public synchronized void serialEvent(SerialPortEvent event) {
 			try{
 				
 				if(event.getNewValue()){
 					
-					System.out.println("Joshua");
 					try{
-						Thread.sleep(30000);
+						String x = input.readLine();
+						if(x.equals("Motion Comming From Main Door!")){
+							
+							SonarPingEmailModel runner = new SonarPingEmailModel("joshua.l99.c@gmail.com", 
+									"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
+							runner.sessionInitialize();
+							runner.run();
+							
+						}
+					
+						
 					}
 					
 					catch(Exception ex){
 						
 					}
 					 
+					
+					
 						
 						
 				}else if(event.getEventType() == SerialPortEvent.OUTPUT_BUFFER_EMPTY){
-					System.out.println("asdf");
+					
 
 				}
 				
 				
 			}catch(Exception ex){
 				ex.printStackTrace();
-				
-				//JOptionPane.showMessageDialog(null, ex.getMessage());
 			}
 		}
 	}

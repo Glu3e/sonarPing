@@ -47,7 +47,7 @@ public class EmailTest {
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
 
 		// Get the Session object.
@@ -73,11 +73,7 @@ public class EmailTest {
 			message.setSubject("Testing Subject");
 
 			// Now set the actual message
-			message.setText("Hello, this is sample for to check send " +
-					"email using JavaMailAPI " +
-					"PYOJOON IT WORKS !!!!!!" +
-					"" +
-					"");
+			message.setText("Hello, this is a test for joshuas work");
 
 			// Send message
 			Transport.send(message);
