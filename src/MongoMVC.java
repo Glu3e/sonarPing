@@ -1,4 +1,4 @@
-package com.za.tutorial.mongodb;
+
 
 public class MongoMVC {
 

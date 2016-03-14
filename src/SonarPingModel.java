@@ -73,7 +73,7 @@ public class SonarPingModel {
 	}
 	
 	public static class Serial implements SerialPortEventListener{
-		@Override
+
 		public synchronized void serialEvent(SerialPortEvent event) {
 			try{
 				

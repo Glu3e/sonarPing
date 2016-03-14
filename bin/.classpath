@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-
 	<classpathentry excluding="src/" kind="src" path=""/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -10,5 +9,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="sonarPing"/>
 		</attributes>
 	</classpathentry>
-
+	<classpathentry kind="lib" path="C:/Users/Jupiter/Downloads/mongo-java-driver-2.12.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>

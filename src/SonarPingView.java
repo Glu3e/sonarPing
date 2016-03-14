@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 //import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
+
 public class SonarPingView extends JFrame {
 	private JPanel panel1;
 	private JPanel panel2;

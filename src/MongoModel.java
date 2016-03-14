@@ -1,4 +1,3 @@
-package com.za.tutorial.mongodb;
 
 import java.net.UnknownHostException;
 
