@@ -28,7 +28,7 @@ public class MongoView extends JFrame{
 	private JButton 	deleteButton = new JButton("Delete");
 	private JButton 	updateButton = new JButton("Update");
 	private JButton     browseButton = new JButton("Browse");
-	private JButton     removeallButton = new JButton("Remove All");
+	//private JButton     removeallButton = new JButton("Remove All");
  
 	public JPanel panelMain;
 	public JPanel panelCenter;
@@ -40,7 +40,8 @@ public class MongoView extends JFrame{
 		
 		
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(600,480);
+		this.setSize(500,180);
+		this.setResizable(false);
 		this.setTitle("MONGO DB TEST");
 		panelMain.setLayout(new BorderLayout());
 		this.add(panelMain);
@@ -95,7 +96,7 @@ public class MongoView extends JFrame{
 		panelCenter.add(browseButton,gbc);	
 		gbc.gridx = 5;
 		gbc.gridy = 4;		
-		panelCenter.add(removeallButton,gbc);		
+		//panelCenter.add(removeallButton,gbc);		
 		setVisible(true);
 		panelMain.add("Center",panelCenter);
 		
@@ -134,8 +135,8 @@ public class MongoView extends JFrame{
 		updateButton.addActionListener(listenForButton);	
 		browseButton.setActionCommand("browseButton");
 		browseButton.addActionListener(listenForButton);
-		removeallButton.setActionCommand("removeallButton");
-		removeallButton.addActionListener(listenForButton);		
+		//removeallButton.setActionCommand("removeallButton");
+		//removeallButton.addActionListener(listenForButton);		
 		
 	}
 	
