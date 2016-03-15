@@ -1,6 +1,8 @@
 
 import java.net.UnknownHostException;
 
+import javax.swing.JOptionPane;
+
 import com.mongodb.*;
 
 public class MongoModel 
@@ -25,23 +27,54 @@ public class MongoModel
 	
 	public void insertMongoDB(String first, String last, String email, String pass)	
 	{	
-		this.basicDBObject.append("First Name",first);
-		this.basicDBObject.append("Last Name",last);
-		this.basicDBObject.append("Email",email);
-		this.basicDBObject.append("Password",pass);
-		//this.basicDBObject.append(key, value);
-		this.dBCollection.insert(new DBObject[] {basicDBObject});		
+		try{
+			this.basicDBObject = new BasicDBObject(); 
+			this.basicDBObject.append("First Name",first);
+			this.basicDBObject.append("Last Name",last);
+			this.basicDBObject.append("Email",email);
+			this.basicDBObject.append("Password",pass);
+			this.dBCollection.insert(new DBObject[] {basicDBObject});		
+		}
+		
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
+		
+	
 	}
 	
 	public void deleteMongoDB(String identifier)
 	{
-		this.basicDBObject.put("First Name", identifier);
-		this.dBCollection.remove(basicDBObject);
+		try{
+			this.basicDBObject.put("First Name", identifier);
+			this.dBCollection.remove(basicDBObject);
+		}
+		
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
 	}
 	
-	public void updateMongoDB(String key, String value)
+	public void updateMongoDB(String first, String last, String email, String pass)
 	{
-	
+		try{
+			this.basicDBObject.put("First Name", first);
+			this.dBCollection.remove(basicDBObject);
+			
+			this.basicDBObject = null;
+			this.basicDBObject = new BasicDBObject(); 
+			
+			this.basicDBObject.append("First Name",first);
+			this.basicDBObject.append("Last Name",last);
+			this.basicDBObject.append("Email",email);
+			this.basicDBObject.append("Password",pass);
+			//this.basicDBObject.append(key, value);
+			this.dBCollection.insert(new DBObject[] {basicDBObject});	
+		}
+		
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
 	}
 	
 	public String selectMongoDB(String key, String value)
@@ -63,7 +96,7 @@ public class MongoModel
 		DBCursor dbCursor = dBCollection.find();
 		while (dbCursor.hasNext()) 
 			//System.out.println(dbCursor.next());
-			str = str + " | " + dbCursor.next();	
+			str = str + "\n" + dbCursor.next();	
 		return str;
 	}
 	

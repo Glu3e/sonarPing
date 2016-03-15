@@ -8,20 +8,14 @@ import javax.swing.*;
 
 public class MongoView extends JFrame{
 	
-	private JTextField firstNumber = new JTextField(10);
-	private JLabel additionLable = new JLabel("+");
-	private JTextField secondNumber = new JTextField(10);
-	private JButton calculateButton = new JButton("Calculate");
-	private JTextField calcSolution = new JTextField(10);
-	
 	private JLabel     firstNameLabel = new JLabel("Firstname: ");
-	private JTextField firstName = new JTextField(10);
+	JTextField firstName = new JTextField(10);
 	private JLabel     lastNameLabel = new JLabel("Lastname: ");
-	private JTextField lastName = new JTextField(10);
+	JTextField lastName = new JTextField(10);
 	private JLabel     EmailLabel = new JLabel("Email: ");
-	private JTextField email = new JTextField(10);
+	JTextField email = new JTextField(10);
 	private JLabel     PasswordLabel = new JLabel("Password: ");
-	private JTextField password = new JTextField(10);
+	JTextField password = new JTextField(10);
 	private JLabel browseUserInfo = new JLabel("Browse User Info :");
 	
 	private JButton 	createButton = new JButton("Create");
@@ -38,22 +32,11 @@ public class MongoView extends JFrame{
 		
 		panelMain = new JPanel();
 		
-		
-		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500,180);
 		this.setResizable(false);
 		this.setTitle("MONGO DB TEST");
 		panelMain.setLayout(new BorderLayout());
 		this.add(panelMain);
-		
-		/*calcPanel = new JPanel();
-		calcPanel.setLayout(new FlowLayout());
-		calcPanel.add(firstNumber);
-		calcPanel.add(additionLable);
-		calcPanel.add(secondNumber);
-		calcPanel.add(calculateButton);
-		calcPanel.add(calcSolution);
-		panelMain.add("North",calcPanel);*/
 		
 		panelCenter = new JPanel();
 		panelCenter.setLayout(new GridBagLayout());		

@@ -21,6 +21,13 @@ public class MongoControl {
 		this.theView.addMongoButtonListener(new MongoButtonListener());		
 	}
 	
+	public void clearFields(){
+		theView.firstName.setText("");
+		theView.lastName.setText("");
+		theView.password.setText("");
+		theView.email.setText("");
+	}
+	
 	class MongoButtonListener implements ActionListener
 	{
 		
@@ -30,32 +37,30 @@ public class MongoControl {
 			int rt;
 			String key, value;
 			
-			// TODO Auto-generated method stub			
+			firstName = theView.getFirstName();
+			lastName = theView.getLastName();
+			password = theView.getPassword();
+			email = theView.getEmail();
+			
+						
 			try
 			{
 				if(e.getActionCommand().equals("CreateButton"))
 				{
-					firstName = theView.getFirstName();
-					lastName = theView.getLastName();
-					password = theView.getPassword();
-					email = theView.getEmail();
 					theModel.insertMongoDB(firstName,lastName,email,password);
-					//JOptionPane.showMessageDialog(null,"Click Create Button");						
 				}
 				else if(e.getActionCommand().equals("deleteButton"))
 				{
 					key = theView.getFirstName();
 					theModel.deleteMongoDB(key);
-					//JOptionPane.showMessageDialog(null,"Click Delete Button");				
 				}
 				else if(e.getActionCommand().equals("updateButton"))
 				{
-					JOptionPane.showMessageDialog(null,"Click Update Button");				
+					theModel.updateMongoDB(firstName, lastName, email, password);				
 				}
 				else if(e.getActionCommand().equals("browseButton"))
 				{
 					str = theModel.browseMongoDB();
-					//JOptionPane.showMessageDialog(null,"Click Browse Button");	
 					JOptionPane.showMessageDialog(null,str);
 				}	
 				else if(e.getActionCommand().equals("removeallButton"))
@@ -63,6 +68,9 @@ public class MongoControl {
 					rt = theModel.removeallMongo();
 					JOptionPane.showMessageDialog(null,"Remove all the data in MongoDB");	
 				}				
+				
+				
+				clearFields();
 			}
 			catch(Exception ex)
 			{
