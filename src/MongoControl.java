@@ -12,6 +12,7 @@ public class MongoControl {
 	private String lastName;
 	private String password;
 	private String email;
+	private String type;
 	
 	public MongoControl(MongoView theView, MongoModel theModel)
 	{
@@ -26,6 +27,7 @@ public class MongoControl {
 		theView.lastName.setText("");
 		theView.password.setText("");
 		theView.email.setText("");
+		theView.type.setText("");
 	}
 	
 	class MongoButtonListener implements ActionListener
@@ -41,13 +43,13 @@ public class MongoControl {
 			lastName = theView.getLastName();
 			password = theView.getPassword();
 			email = theView.getEmail();
-			
+			type = theView.getUserType();
 						
 			try
 			{
 				if(e.getActionCommand().equals("CreateButton"))
 				{
-					theModel.insertMongoDB(firstName,lastName,email,password);
+					theModel.insertMongoDB(firstName,lastName,email,password,type);
 				}
 				else if(e.getActionCommand().equals("deleteButton"))
 				{
@@ -56,7 +58,7 @@ public class MongoControl {
 				}
 				else if(e.getActionCommand().equals("updateButton"))
 				{
-					theModel.updateMongoDB(firstName, lastName, email, password);				
+					theModel.updateMongoDB(firstName, lastName, email, password,type);				
 				}
 				else if(e.getActionCommand().equals("browseButton"))
 				{

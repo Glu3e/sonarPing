@@ -17,6 +17,8 @@ public class MongoView extends JFrame{
 	private JLabel     PasswordLabel = new JLabel("Password: ");
 	JTextField password = new JTextField(10);
 	private JLabel browseUserInfo = new JLabel("Browse User Info :");
+	JTextField type = new JTextField(10);
+	private JLabel userType = new JLabel("Type :");
 	
 	private JButton 	createButton = new JButton("Create");
 	private JButton 	deleteButton = new JButton("Delete");
@@ -32,7 +34,7 @@ public class MongoView extends JFrame{
 		
 		panelMain = new JPanel();
 		
-		this.setSize(500,180);
+		this.setSize(600,180);
 		this.setResizable(false);
 		this.setTitle("MONGO DB TEST");
 		panelMain.setLayout(new BorderLayout());
@@ -67,18 +69,24 @@ public class MongoView extends JFrame{
 		panelCenter.add(password,gbc);
 		gbc.gridx = 0;
 		gbc.gridy = 4;
+		panelCenter.add(userType,gbc);
+		gbc.gridx = 1;
+		gbc.gridy = 4;
+		panelCenter.add(type,gbc);
+		gbc.gridx = 0;
+		gbc.gridy = 5;
 		panelCenter.add(createButton,gbc);
 		gbc.gridx = 1;
-		gbc.gridy = 4;		
+		gbc.gridy = 5;		
 		panelCenter.add(deleteButton,gbc);
 		gbc.gridx = 2;
-		gbc.gridy = 4;		
+		gbc.gridy = 5;		
 		panelCenter.add(updateButton,gbc);
 		gbc.gridx = 3;
-		gbc.gridy = 4;		
+		gbc.gridy = 5;		
 		panelCenter.add(browseButton,gbc);	
 		gbc.gridx = 5;
-		gbc.gridy = 4;		
+		gbc.gridy = 5;		
 		//panelCenter.add(removeallButton,gbc);		
 		setVisible(true);
 		panelMain.add("Center",panelCenter);
@@ -106,6 +114,10 @@ public class MongoView extends JFrame{
 		return password.getText();
 	}
 	
+	public String getUserType()
+	{
+		return type.getText();
+	}
 
 	
 	void addMongoButtonListener(ActionListener listenForButton)

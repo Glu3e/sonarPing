@@ -84,8 +84,9 @@ public class SonarPingModel {
 					try{
 						String x = input.readLine();
 						if(x.equals("Motion Comming From Main Door!")){
-							
-							SonarPingEmailModel runner = new SonarPingEmailModel("joshua.l99.c@gmail.com", 
+							MongoModel model = new MongoModel();
+							String emails = model.getAllEmails();
+							SonarPingEmailModel runner = new SonarPingEmailModel(emails, 
 									"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
 							runner.sessionInitialize();
 							runner.run();

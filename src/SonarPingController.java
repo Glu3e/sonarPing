@@ -34,12 +34,15 @@ public class SonarPingController {
 
 				sonarPingModel.toggle(1);
 				sonarPingView.colorPanel.setBackground(Color.RED);
-				
+				sonarPingView.ArmJButton.setEnabled(false);
+				sonarPingView.DisarmJButton.setEnabled(true);
 				
 			}else if(arg0.getSource() == sonarPingView.DisarmJButton){
 				
 				sonarPingView.colorPanel.setBackground(Color.GREEN);
 				sonarPingModel.toggle(0);
+				sonarPingView.ArmJButton.setEnabled(true);
+				sonarPingView.DisarmJButton.setEnabled(false);
 			}
 		}
 	}
