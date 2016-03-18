@@ -23,6 +23,8 @@ public class MongoView extends JFrame{
 	private JLabel browseUserInfo = new JLabel("Browse User Info :");
 	JTextField type = new JTextField(10);
 	private JLabel userType = new JLabel("Type :");
+	String[] petStrings = { "Homeowner", "Dependant", "Time-Sensitive" };
+
 	
 	private JButton 	createButton = new JButton("Create");
 	private JButton 	deleteButton = new JButton("Delete");

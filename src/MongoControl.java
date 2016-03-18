@@ -51,7 +51,15 @@ public class MongoControl {
 			JOptionPane.showMessageDialog(null,"You need to input type!");
 			rt = false;
 		}
-		
+		else if ( !theView.type.getText().equals("DEPENDENT") )
+		{
+			JOptionPane.showMessageDialog(null,"You need to input type to be DEPENDENT!");
+			rt = false;
+		}
+		else
+		{		
+			rt = true;
+		}
 		return rt;
 	}
 	
@@ -69,7 +77,7 @@ public class MongoControl {
 		public void actionPerformed(ActionEvent e) 
 		{
 			String str;
-			int rt;
+			int dialogreturn;
 			String key, value;
 			Boolean ret;
 			
@@ -103,7 +111,7 @@ public class MongoControl {
 				}	
 				else if(e.getActionCommand().equals("removeallButton"))
 				{
-					rt = theModel.removeallMongo();
+					dialogreturn = theModel.removeallMongo();
 					JOptionPane.showMessageDialog(null,"Remove all the data in MongoDB");	
 				}				
 				
