@@ -17,7 +17,7 @@ public class SonarPingModel {
 	CommPortIdentifier basicPort;
 	static BufferedReader input;
 	static OutputStream output;
-
+	public static boolean  disarmButtonPresses;
 	SonarPingModel(String comPortName){
 		try{
 			//Identifying the port
@@ -81,20 +81,29 @@ public class SonarPingModel {
 				// Create a new SonarPingEmailModel as a new Thread and run it 
 				if(event.getNewValue()){
 					
-					try{
-						String x = input.readLine();
-						if(x.equals("Motion Comming From Main Door!")){
-							MongoModel model = new MongoModel();
-							String emails = model.getAllEmails();
-							SonarPingEmailModel runner = new SonarPingEmailModel(emails, 
-									"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
-							runner.sessionInitialize();
-							runner.run();
-							
-						}
 					
+						try{
+							String x = input.readLine();
+							//Please Remove after testing
+							if(!disarmButtonPresses){
+								if(x.equals("Motion Comming From Main Door!")){
+									MongoModel model = new MongoModel();
+									String emails = model.getAllEmails();
+									model = null;
+									
+									SonarPingEmailModel runner = new SonarPingEmailModel(emails, 
+											"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
+									runner.sessionInitialize();
+									runner.run();
+									
+								}
+							}else{
+								//Please Remove after testing
+								disarmButtonPresses = false;
+							}
+						}
 						
-					}
+					
 					
 					catch(Exception ex){
 						ex.printStackTrace();

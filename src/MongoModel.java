@@ -1,9 +1,9 @@
 
 import java.net.UnknownHostException;
-
 import javax.swing.JOptionPane;
-
 import com.mongodb.*;
+
+
 
 public class MongoModel 
 {
@@ -96,9 +96,9 @@ public class MongoModel
 	{
 		String str = "";
 		DBCursor dbCursor = dBCollection.find();
-		while (dbCursor.hasNext()) 
-			//System.out.println(dbCursor.next());
-			str = str + "\n" + dbCursor.next();	
+		while (dbCursor.hasNext()){ 
+			str = str + "\n" + dbCursor.next();
+		}
 		return str;
 	}
 	
@@ -116,8 +116,7 @@ public class MongoModel
 		userTypeQuery.append("Type", "DEPENDENT");
 		emailQuery.append("Email","1");
 		
-		
-		
+
 		DBCursor dbCursor = dBCollection.find(userTypeQuery,emailQuery);
 		
 		while (dbCursor.hasNext()){ 
@@ -126,11 +125,11 @@ public class MongoModel
 			finalEmailString += placeHolderString.substring(placeHolderString.indexOf(":"), placeHolderString.length()-1).substring(3) + ",";
 		}
 		
-		
-		
-		
+
 		return finalEmailString.substring(0, finalEmailString.length()-1);
 	}
+	
+	
 	
 	public int removeallMongo()
 	{

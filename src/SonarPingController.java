@@ -36,6 +36,7 @@ public class SonarPingController {
 				sonarPingView.colorPanel.setBackground(Color.RED);
 				sonarPingView.ArmJButton.setEnabled(false);
 				sonarPingView.DisarmJButton.setEnabled(true);
+				sonarPingModel.disarmButtonPresses = false;
 				
 			}else if(arg0.getSource() == sonarPingView.DisarmJButton){
 				
@@ -43,6 +44,7 @@ public class SonarPingController {
 				sonarPingModel.toggle(0);
 				sonarPingView.ArmJButton.setEnabled(true);
 				sonarPingView.DisarmJButton.setEnabled(false);
+				sonarPingModel.disarmButtonPresses = true;
 			}
 		}
 	}
