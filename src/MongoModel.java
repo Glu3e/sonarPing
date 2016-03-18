@@ -18,7 +18,7 @@ public class MongoModel
 			
 			this.dBCollection = dB.getCollection("UserDB");
 			this.basicDBObject = new BasicDBObject();
-		} catch (UnknownHostException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
