@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+
 public class MongoControl {
 	private MongoView theView;
 	private MongoModel theModel;
@@ -25,7 +26,8 @@ public class MongoControl {
 	public Boolean validate()
 	{
 		Boolean rt=false;
-		String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\ @([\\w]+\\.)+[\\w]+[\\w]$";
+		String EMAIL_REGEX = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+		String EmailText;
 		
 		if( theView.firstName.getText().isEmpty() ) 
 		{
@@ -47,9 +49,17 @@ public class MongoControl {
 			JOptionPane.showMessageDialog(null,"You need to input email!");
 			rt = false;
 			
-		}else if(theView.email.getText().matches(EMAIL_REGEX)){
-			JOptionPane.showMessageDialog(null,"You need to input a correct email!");
-			rt = false;
+		}else if( !theView.email.getText().isEmpty() )
+		{
+			EmailText = theView.email.getText();
+			if(EmailText.matches(EMAIL_REGEX)){
+				
+				rt = true;
+			}
+			else {
+				JOptionPane.showMessageDialog(null,"You need to input a correct email!");
+				rt = false;
+			}
 		}
 		else if( theView.type.getText().isEmpty() ) 
 		{

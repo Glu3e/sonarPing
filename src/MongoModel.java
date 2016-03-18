@@ -43,6 +43,7 @@ public class MongoModel
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
 		
+		close();
 	
 	}
 	
@@ -56,6 +57,8 @@ public class MongoModel
 		catch(Exception ex){
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
+		
+		close();
 	}
 	
 	public void updateMongoDB(String first, String last, String email, String pass, String type)
@@ -80,6 +83,8 @@ public class MongoModel
 		catch(Exception ex){
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
+		
+		close();
 	}
 	
 	public String selectMongoDB(String key, String value)
@@ -89,9 +94,10 @@ public class MongoModel
 		this.basicDBObject.put(key, value);
 		DBCursor dbCursor = this.dBCollection.find(basicDBObject);		
 		while (dbCursor.hasNext()) 
-			//System.out.println(dbCursor.next());
 			str = str + " | " + dbCursor.next();
 		
+		
+		close();
 		return str;
 	}
 	
@@ -122,6 +128,8 @@ public class MongoModel
 			type   = (String)obj.get("Type");
 			theView.tblmodelView.addRow(new Object[] {firstn, lastn, email, passwd, type});			
 		}
+		
+		close();
 		return str;
 	}
 	
@@ -150,7 +158,7 @@ public class MongoModel
 		}
 		
 		
-		
+		close();
 		
 		return finalEmailString.substring(0, finalEmailString.length()-1);
 	}
@@ -161,6 +169,10 @@ public class MongoModel
 		
 		this.dBCollection.remove(new BasicDBObject());
 		return i;
+	}
+	
+	public void close(){
+		this.basicDBObject = null;
 	}
 
 }
