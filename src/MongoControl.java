@@ -22,6 +22,39 @@ public class MongoControl {
 		this.theView.addMongoButtonListener(new MongoButtonListener());		
 	}
 	
+	public Boolean validate()
+	{
+		Boolean rt=false;
+		
+		if( theView.firstName.getText().isEmpty() ) 
+		{
+			JOptionPane.showMessageDialog(null,"You need to input first name!");
+			rt = false;
+		}
+		else if( theView.lastName.getText().isEmpty() ) 
+		{
+			JOptionPane.showMessageDialog(null,"You need to input last name!");
+			rt = false;
+		}
+		else if( theView.password.getText().isEmpty() ) 
+		{
+			JOptionPane.showMessageDialog(null,"You need to input password!");
+			rt = false;
+		}
+		else if( theView.email.getText().isEmpty() ) 
+		{
+			JOptionPane.showMessageDialog(null,"You need to input email!");
+			rt = false;
+		}
+		else if( theView.type.getText().isEmpty() ) 
+		{
+			JOptionPane.showMessageDialog(null,"You need to input type!");
+			rt = false;
+		}
+		
+		return rt;
+	}
+	
 	public void clearFields(){
 		theView.firstName.setText("");
 		theView.lastName.setText("");
@@ -38,6 +71,7 @@ public class MongoControl {
 			String str;
 			int rt;
 			String key, value;
+			Boolean ret;
 			
 			firstName = theView.getFirstName();
 			lastName = theView.getLastName();
@@ -49,7 +83,9 @@ public class MongoControl {
 			{
 				if(e.getActionCommand().equals("CreateButton"))
 				{
-					theModel.insertMongoDB(firstName,lastName,email,password,type);
+					ret = validate();
+					if(ret)
+						theModel.insertMongoDB(firstName,lastName,email,password,type);
 				}
 				else if(e.getActionCommand().equals("deleteButton"))
 				{
@@ -62,8 +98,8 @@ public class MongoControl {
 				}
 				else if(e.getActionCommand().equals("browseButton"))
 				{
-					str = theModel.browseMongoDB();
-					JOptionPane.showMessageDialog(null,str);
+					str = theModel.browseMongoDB(theView, theModel);
+					//JOptionPane.showMessageDialog(null,str);
 				}	
 				else if(e.getActionCommand().equals("removeallButton"))
 				{

@@ -1,6 +1,7 @@
 
 import java.net.UnknownHostException;
 
+
 import javax.swing.JOptionPane;
 
 import com.mongodb.*;
@@ -18,7 +19,8 @@ public class MongoModel
 			
 			this.dBCollection = dB.getCollection("UserDB");
 			this.basicDBObject = new BasicDBObject();
-		} catch (UnknownHostException e) {
+		} 
+		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -58,6 +60,7 @@ public class MongoModel
 	
 	public void updateMongoDB(String first, String last, String email, String pass, String type)
 	{
+		
 		try{
 			this.basicDBObject.put("First Name", first);
 			this.dBCollection.remove(basicDBObject);
@@ -92,13 +95,33 @@ public class MongoModel
 		return str;
 	}
 	
-	public String browseMongoDB()
+	
+	
+	public String browseMongoDB(MongoView theView, MongoModel theModel)
 	{
 		String str = "";
+		String firstn, lastn, email, passwd, type;
 		DBCursor dbCursor = dBCollection.find();
-		while (dbCursor.hasNext()) 
+		DBObject obj;
+		
+		int rowCount = theView.tblmodelView.getRowCount();
+		//Remove rows one by one from the end of the table
+		for (int i = rowCount - 1; i >= 0; i--) {
+			theView.tblmodelView.removeRow(i);
+		}
+		
+		while (dbCursor.hasNext()) {
 			//System.out.println(dbCursor.next());
-			str = str + "\n" + dbCursor.next();	
+			//str = str + "\n" + dbCursor.next();
+			obj = dbCursor.next();
+			str = str +	"\n" + obj;
+			firstn = (String)obj.get("First Name");
+			lastn  = (String)obj.get("Last Name");
+			email  = (String)obj.get("Email");
+			passwd = (String)obj.get("Password");
+			type   = (String)obj.get("Type");
+			theView.tblmodelView.addRow(new Object[] {firstn, lastn, email, passwd, type});			
+		}
 		return str;
 	}
 	

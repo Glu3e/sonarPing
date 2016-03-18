@@ -1,10 +1,14 @@
-
+import java.awt.*;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.event.ListSelectionEvent;  
+import javax.swing.event.ListSelectionListener;
 
 public class MongoView extends JFrame{
 	
@@ -13,7 +17,7 @@ public class MongoView extends JFrame{
 	private JLabel     lastNameLabel = new JLabel("Lastname: ");
 	JTextField lastName = new JTextField(10);
 	private JLabel     EmailLabel = new JLabel("Email: ");
-	JTextField email = new JTextField(10);
+	JTextField email = new JTextField(20);
 	private JLabel     PasswordLabel = new JLabel("Password: ");
 	JTextField password = new JTextField(10);
 	private JLabel browseUserInfo = new JLabel("Browse User Info :");
@@ -25,20 +29,73 @@ public class MongoView extends JFrame{
 	private JButton 	updateButton = new JButton("Update");
 	private JButton     browseButton = new JButton("Browse");
 	//private JButton     removeallButton = new JButton("Remove All");
+	private JButton 	btnView1;
  
 	public JPanel panelMain;
 	public JPanel panelCenter;
-	public JPanel calcPanel;
+	//public JPanel calcPanel;
 	
-	MongoView(){
+	public JPanel panelView;
+	public JScrollPane srlpaneView;
+	public JTable dbTableView;
+	public DefaultTableModel tblmodelView;	
+	
+	
+	public void buildViewPanel()
+	{
+		panelView = new JPanel();
+		
+		panelView.setLayout(new BorderLayout());
+		btnView1 = new JButton("Reflesh");
+		panelView.add("South",btnView1);
+		
+		Object[] columns = {"FirstName", "LastName", "Email", "Password", "Type"};
+		tblmodelView = new DefaultTableModel();
+		tblmodelView.setColumnIdentifiers(columns);
+		dbTableView = new JTable(tblmodelView);
+		dbTableView.setBackground(Color.lightGray);
+		dbTableView.setForeground(Color.black);
+		//Font font = new Font("",1,14);
+		//dbTableView.setFont(font);	
+		srlpaneView = new JScrollPane(dbTableView);
+				
+		panelView.add("North",srlpaneView);
+		
+		
+		dbTableView.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+		    @Override
+		    public void valueChanged(ListSelectionEvent event) 
+		    {
+		    	
+		        if (dbTableView.getSelectedRow() > -1) 
+		        {
+		            // print first column value from selected row
+		            //JOptionPane.showMessageDialog(null,dbTableView.getValueAt(dbTableView.getSelectedRow(), 0).toString());
+		            firstName.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 0).toString());
+		            lastName.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 1).toString());
+		            email.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 2).toString());
+		            password.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 3).toString());
+		            type.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 4).toString());
+		        }
+		    }
+		});		
+		
+		
+	}	
+	
+	MongoView()
+	{
 		
 		panelMain = new JPanel();
 		
-		this.setSize(600,180);
+		this.setSize(600,680);
 		this.setResizable(false);
-		this.setTitle("MONGO DB TEST");
+		this.setTitle("Users Information Management");
 		panelMain.setLayout(new BorderLayout());
 		this.add(panelMain);
+		
+		buildViewPanel();
+		panelMain.add("North",panelView);
 		
 		panelCenter = new JPanel();
 		panelCenter.setLayout(new GridBagLayout());		
