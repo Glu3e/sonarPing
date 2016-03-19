@@ -121,19 +121,6 @@ public class MongoView extends JFrame{
 		return type.getText();
 	}
 
-	
-	void addMongoButtonListener(ActionListener listenForButton)
-	{
-		//createButton.setActionCommand("CreateButton");
-		//createButton.addActionListener(listenForButton);
-		//deleteButton.setActionCommand("deleteButton");
-		//deleteButton.addActionListener(listenForButton);
-		updateButton.setActionCommand("updateButton");
-		updateButton.addActionListener(listenForButton);	
-		browseButton.setActionCommand("browseButton");
-		browseButton.addActionListener(listenForButton);
-	}
-	
 	void addCreateButtonListener(ActionListener listener){
 		createButton.addActionListener(listener);
 	}

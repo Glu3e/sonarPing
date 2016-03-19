@@ -19,9 +19,11 @@ public class MongoControl {
 		this.theView = theView;
 		this.theModel = theModel;
 		
-		this.theView.addMongoButtonListener(new MongoButtonListener());		
+				
 		this.theView.addCreateButtonListener(new MongoCreateButtonListener());
 		this.theView.addDeleteButtonListener(new MongoDeleteButtonListener());
+		this.theView.addUpdateButtonListener(new MongoUpdateButtonListener());
+		this.theView.addBrowseButtonListener(new MongoBrowseButtonListener());
 	}
 	
 	public boolean validateFields(){
@@ -70,66 +72,10 @@ public class MongoControl {
 		theView.type.setText("");
 	}
 	
-	class MongoButtonListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e) 
-		{
-			String str;
-			
-			String key, value;
-			
-			firstName = theView.getFirstName();
-			lastName = theView.getLastName();
-			password = theView.getPassword();
-			email = theView.getEmail();
-			type = theView.getUserType();
-						
-			try
-			{
-				if(e.getActionCommand().equals("deleteButton") && !firstName.equals(""))
-				{
-					key = theView.getFirstName();
-					theModel.deleteMongoDB(key);
-					return;
-				}
-				
-				if(e.getActionCommand().equals("browseButton") && !firstName.equals(""))
-				{
-					str = theModel.browseMongoDB();
-					JOptionPane.showMessageDialog(null,str);
-					return;
-				}
-				
-				
-				if(validateFields()){
-					if(e.getActionCommand().equals("CreateButton"))
-					{
-						theModel.insertMongoDB(firstName,lastName,email,password,type);
-					}
-					else if(e.getActionCommand().equals("updateButton"))
-					{
-						theModel.updateMongoDB(firstName, lastName, email, password,type);				
-					}				
-				}
-				
-				
-				
-				clearFields();
-				return;
-			}
-			catch(Exception ex)
-			{
-				theView.displayErrorMessage("Mongo DB operation fail.");;
-			}
-		}
-	}
-	
-	
 	class MongoCreateButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			
-			String str;
-			String key, value;
+			
 			
 			firstName = theView.getFirstName();
 			lastName = theView.getLastName();
@@ -137,11 +83,13 @@ public class MongoControl {
 			email = theView.getEmail();
 			type = theView.getUserType();
 			
-			if(validateFields()){
-				if(e.getSource() == theView.createButton){
-					theModel.insertMongoDB(firstName,lastName,email,password,type);
-				}
+			
+			if(e.getSource() == theView.createButton &&  !firstName.equals("")){
+				theModel.insertMongoDB(firstName,lastName,email,password,type);
+			}else{
+				JOptionPane.showMessageDialog(null, "Enter a First Name");
 			}
+			
 			
 			clearFields();
 			
@@ -152,10 +100,7 @@ public class MongoControl {
 	class MongoDeleteButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			
-			String str;
-			
-			String key, value;
-			
+			String key;
 			firstName = theView.getFirstName();
 			lastName = theView.getLastName();
 			password = theView.getPassword();
@@ -163,11 +108,12 @@ public class MongoControl {
 			type = theView.getUserType();
 			
 			
-			if(e.getSource() == theView.deleteButton){
+			if(e.getSource() == theView.deleteButton && !firstName.equals("")){
 				key = theView.getFirstName();
 				theModel.deleteMongoDB(key);
 				return;
-				
+			}else{
+				JOptionPane.showMessageDialog(null, "Enter a First Name");
 			}
 			
 			clearFields();
@@ -178,15 +124,37 @@ public class MongoControl {
 	
 	class MongoUpdateButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
+			firstName = theView.getFirstName();
+			lastName = theView.getLastName();
+			password = theView.getPassword();
+			email = theView.getEmail();
+			type = theView.getUserType();
+			
+			if(validateFields()){
+				theModel.updateMongoDB(firstName, lastName, email, password,type);
+			}
+			clearFields();
+			return;
 		}
 		
 	}
 
 	class MongoBrowseButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			
+			String str;
+			
+			firstName = theView.getFirstName();
+			lastName = theView.getLastName();
+			password = theView.getPassword();
+			email = theView.getEmail();
+			type = theView.getUserType();
+			
+			if(e.getSource() == theView.browseButton){
+				str = theModel.browseMongoDB();
+				JOptionPane.showMessageDialog(null,str);
+			}
 			
 		}
 		
