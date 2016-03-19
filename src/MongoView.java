@@ -20,10 +20,11 @@ public class MongoView extends JFrame{
 	JTextField type = new JTextField(10);
 	private JLabel userType = new JLabel("Type :");
 	
-	private JButton 	createButton = new JButton("Create");
-	private JButton 	deleteButton = new JButton("Delete");
-	private JButton 	updateButton = new JButton("Update");
-	private JButton     browseButton = new JButton("Browse");
+	JButton 	createButton = new JButton("Create");
+	JButton 	deleteButton = new JButton("Delete");
+	JButton 	updateButton = new JButton("Update");
+	JButton     browseButton = new JButton("Browse");
+	
 	//private JButton     removeallButton = new JButton("Remove All");
  
 	public JPanel panelMain;
@@ -37,6 +38,7 @@ public class MongoView extends JFrame{
 		this.setSize(600,180);
 		this.setResizable(false);
 		this.setTitle("MONGO DB TEST");
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		panelMain.setLayout(new BorderLayout());
 		this.add(panelMain);
 		
@@ -122,18 +124,32 @@ public class MongoView extends JFrame{
 	
 	void addMongoButtonListener(ActionListener listenForButton)
 	{
-		createButton.setActionCommand("CreateButton");
-		createButton.addActionListener(listenForButton);
-		deleteButton.setActionCommand("deleteButton");
-		deleteButton.addActionListener(listenForButton);
+		//createButton.setActionCommand("CreateButton");
+		//createButton.addActionListener(listenForButton);
+		//deleteButton.setActionCommand("deleteButton");
+		//deleteButton.addActionListener(listenForButton);
 		updateButton.setActionCommand("updateButton");
 		updateButton.addActionListener(listenForButton);	
 		browseButton.setActionCommand("browseButton");
 		browseButton.addActionListener(listenForButton);
-		//removeallButton.setActionCommand("removeallButton");
-		//removeallButton.addActionListener(listenForButton);		
-		
 	}
+	
+	void addCreateButtonListener(ActionListener listener){
+		createButton.addActionListener(listener);
+	}
+	
+	void addDeleteButtonListener(ActionListener listener){
+		deleteButton.addActionListener(listener);
+	}
+	
+	void addUpdateButtonListener(ActionListener listener){
+		updateButton.addActionListener(listener);
+	}
+	
+	void addBrowseButtonListener(ActionListener listener){
+		browseButton.addActionListener(listener);
+	}
+	
 	
 	void displayErrorMessage(String errorMessage)
 	{

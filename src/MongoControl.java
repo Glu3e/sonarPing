@@ -1,8 +1,7 @@
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import javax.swing.JOptionPane;
 
 public class MongoControl {
@@ -21,62 +20,47 @@ public class MongoControl {
 		this.theModel = theModel;
 		
 		this.theView.addMongoButtonListener(new MongoButtonListener());		
+		this.theView.addCreateButtonListener(new MongoCreateButtonListener());
+		this.theView.addDeleteButtonListener(new MongoDeleteButtonListener());
 	}
 	
-	public Boolean validate()
-	{
-		Boolean rt=false;
-		//String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\ @([\\w]+\\.)+[\\w]+[\\w]$";
+	public boolean validateFields(){
 		
+		firstName = theView.getFirstName();
+		lastName = theView.getLastName();
+		password = theView.getPassword();
+		email = theView.getEmail();
+		type = theView.getUserType();
 		
-		if( theView.firstName.getText().isEmpty() ) 
-		{
-			JOptionPane.showMessageDialog(null,"You need to input first name!");
-			rt = false;
-		}
-		else if( theView.lastName.getText().isEmpty() ) 
-		{
-			JOptionPane.showMessageDialog(null,"You need to input last name!");
-			rt = false;
-		}
-		else if( theView.password.getText().isEmpty() ) 
-		{
-			JOptionPane.showMessageDialog(null,"You need to input password!");
-			rt = false;
-		}
-		else if( theView.email.getText().isEmpty() ) 
-		{
-			JOptionPane.showMessageDialog(null,"You need to input email!");
-			rt = false;
-		}
-		else if(!theView.email.getText().isEmpty())
-		{
-			try {
-				InternetAddress emailAddr = new InternetAddress(theView.email.getText());
-				emailAddr.validate();
-			} catch (AddressException ex) {
-				JOptionPane.showMessageDialog(null,"You need to input a correct email!");
-				rt = false;
-			}
-			//return result;
+		if(firstName.equals("")){
+			JOptionPane.showMessageDialog(null, "Enter A First Name!");
+			return false;
 		}
 		
-		else if( theView.type.getText().isEmpty() ) 
-		{
-			JOptionPane.showMessageDialog(null,"You need to input type!");
-			rt = false;
+		if(lastName.equals("")){
+			JOptionPane.showMessageDialog(null, "Enter A Last Name!");
+			return false;
 		}
-		else if ( !theView.type.getText().equals("DEPENDENT") )
-		{
-			JOptionPane.showMessageDialog(null,"You need to input type to be DEPENDENT!");
-			rt = false;
+		
+		if(password.equals("")){
+			JOptionPane.showMessageDialog(null, "Enter A Password!");
+			return false;
 		}
-		else
-		{
-			rt = true;
+		
+		if(email.equals("")){
+			JOptionPane.showMessageDialog(null, "Enter A Email!");
+			return false;
 		}
-		return rt;
+		
+		if(type.equals("") || !type.equals("DEPENDENT")){
+			JOptionPane.showMessageDialog(null, "Enter A Status!");
+			return false;
+		}
+		
+		return true;
+		
 	}
+	
 	
 	public void clearFields(){
 		theView.firstName.setText("");
@@ -88,13 +72,11 @@ public class MongoControl {
 	
 	class MongoButtonListener implements ActionListener
 	{
-		
 		public void actionPerformed(ActionEvent e) 
 		{
 			String str;
-			int dialogreturn;
+			
 			String key, value;
-			Boolean ret;
 			
 			firstName = theView.getFirstName();
 			lastName = theView.getLastName();
@@ -104,34 +86,36 @@ public class MongoControl {
 						
 			try
 			{
-				if(e.getActionCommand().equals("CreateButton"))
-				{
-					ret = validate();
-					if(ret)
-						theModel.insertMongoDB(firstName,lastName,email,password,type);
-				}
-				else if(e.getActionCommand().equals("deleteButton"))
+				if(e.getActionCommand().equals("deleteButton") && !firstName.equals(""))
 				{
 					key = theView.getFirstName();
 					theModel.deleteMongoDB(key);
+					return;
 				}
-				else if(e.getActionCommand().equals("updateButton"))
-				{
-					theModel.updateMongoDB(firstName, lastName, email, password,type);				
-				}
-				else if(e.getActionCommand().equals("browseButton"))
+				
+				if(e.getActionCommand().equals("browseButton") && !firstName.equals(""))
 				{
 					str = theModel.browseMongoDB();
-					//JOptionPane.showMessageDialog(null,str);
-				}	
-				else if(e.getActionCommand().equals("removeallButton"))
-				{
-					dialogreturn = theModel.removeallMongo();
-					JOptionPane.showMessageDialog(null,"Remove all the data in MongoDB");	
-				}				
+					JOptionPane.showMessageDialog(null,str);
+					return;
+				}
+				
+				
+				if(validateFields()){
+					if(e.getActionCommand().equals("CreateButton"))
+					{
+						theModel.insertMongoDB(firstName,lastName,email,password,type);
+					}
+					else if(e.getActionCommand().equals("updateButton"))
+					{
+						theModel.updateMongoDB(firstName, lastName, email, password,type);				
+					}				
+				}
+				
 				
 				
 				clearFields();
+				return;
 			}
 			catch(Exception ex)
 			{
@@ -139,4 +123,73 @@ public class MongoControl {
 			}
 		}
 	}
+	
+	
+	class MongoCreateButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			
+			String str;
+			String key, value;
+			
+			firstName = theView.getFirstName();
+			lastName = theView.getLastName();
+			password = theView.getPassword();
+			email = theView.getEmail();
+			type = theView.getUserType();
+			
+			if(validateFields()){
+				if(e.getSource() == theView.createButton){
+					theModel.insertMongoDB(firstName,lastName,email,password,type);
+				}
+			}
+			
+			clearFields();
+			
+		}
+		
+	}
+	
+	class MongoDeleteButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			
+			String str;
+			
+			String key, value;
+			
+			firstName = theView.getFirstName();
+			lastName = theView.getLastName();
+			password = theView.getPassword();
+			email = theView.getEmail();
+			type = theView.getUserType();
+			
+			
+			if(e.getSource() == theView.deleteButton){
+				key = theView.getFirstName();
+				theModel.deleteMongoDB(key);
+				return;
+				
+			}
+			
+			clearFields();
+			return;
+		}
+		
+	}
+	
+	class MongoUpdateButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+
+	class MongoBrowseButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
 }
