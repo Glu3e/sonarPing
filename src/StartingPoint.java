@@ -4,5 +4,7 @@ public class StartingPoint {
 		SonarPingModel model = new SonarPingModel("COM4");	
 		SonarPingView view = new SonarPingView();
 		SonarPingController controller = new SonarPingController(model, view,null);
+		
+		
 	}
 }
