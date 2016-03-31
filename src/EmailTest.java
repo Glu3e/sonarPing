@@ -15,7 +15,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+// Using the WIFI
 public class EmailTest {
 	public static void main(String [] args){
 		/*System.out.println("Hello");
