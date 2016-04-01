@@ -235,7 +235,7 @@ public class MyUI extends JFrame
 						if(SensorList[i]==SLOTUSED)
 						{
 							SensorList[i] = SLOTREMOVED;
-							//removeSensorListeners(i);
+							removeSensorListeners(i);
 							removefromCenterPanel();
 							setVisible(true);
 							break;
