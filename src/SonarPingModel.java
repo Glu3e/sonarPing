@@ -7,6 +7,9 @@ import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
  /**
  * @author Jupiter
  * 
@@ -89,7 +92,7 @@ public class SonarPingModel {
 								if(x.equals("Motion Comming From Main Door!")){
 									MongoModel model = new MongoModel();
 									String emails = model.getAllEmails();
-									model.detached();
+									//model.detached();
 									model = null;
 									
 									SonarPingEmailModel runner = new SonarPingEmailModel(emails, 

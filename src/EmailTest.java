@@ -16,6 +16,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 // Using the WIFI
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
 public class EmailTest {
 	public static void main(String [] args){
 		/*System.out.println("Hello");

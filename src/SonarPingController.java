@@ -4,7 +4,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
-
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Jupiter

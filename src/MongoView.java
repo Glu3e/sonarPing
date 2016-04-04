@@ -1,13 +1,22 @@
-
+import java.awt.*;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.event.ListSelectionEvent;  
+import javax.swing.event.ListSelectionListener;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class MongoView extends JFrame{
 	
+	private JLabel useridLabel = new JLabel("UserID: ");
+	JTextField userid = new JTextField(40);
 	private JLabel     firstNameLabel = new JLabel("Firstname: ");
 	JTextField firstName = new JTextField(10);
 	private JLabel     lastNameLabel = new JLabel("Lastname: ");
@@ -19,28 +28,83 @@ public class MongoView extends JFrame{
 	private JLabel browseUserInfo = new JLabel("Browse User Info :");
 	JTextField type = new JTextField(10);
 	private JLabel userType = new JLabel("Type :");
+	String[] petStrings = { "Homeowner", "Dependant", "Time-Sensitive" };
+
+
 	
-	JButton 	createButton = new JButton("Create");
-	JButton 	deleteButton = new JButton("Delete");
-	JButton 	updateButton = new JButton("Update");
-	JButton     browseButton = new JButton("Browse");
-	
-	//private JButton     removeallButton = new JButton("Remove All");
+	private JButton 	createButton = new JButton("Create");
+	private JButton 	deleteButton = new JButton("Delete");
+	private JButton 	updateButton = new JButton("Update");
+	private JButton     browseButton = new JButton("Browse");
+	private JButton     removeallButton = new JButton("Remove All");
+	private JButton 	btnView1;
  
 	public JPanel panelMain;
 	public JPanel panelCenter;
-	public JPanel calcPanel;
+	//public JPanel calcPanel;
 	
-	MongoView(){
+	public JPanel panelView;
+	public JScrollPane srlpaneView;
+	public JTable dbTableView;
+	public DefaultTableModel tblmodelView;	
+	
+	
+	public void buildViewPanel()
+	{
+		panelView = new JPanel();
+		
+		panelView.setLayout(new BorderLayout());
+		btnView1 = new JButton("Reflesh");
+		panelView.add("South",btnView1);
+		
+		Object[] columns = {"FirstName", "LastName", "Email", "Password", "Type"/*, "Id"*/};
+		tblmodelView = new DefaultTableModel();
+		tblmodelView.setColumnIdentifiers(columns);
+		dbTableView = new JTable(tblmodelView);
+		dbTableView.setBackground(Color.lightGray);
+		dbTableView.setForeground(Color.black);
+		//Font font = new Font("",1,14);
+		//dbTableView.setFont(font);	
+		srlpaneView = new JScrollPane(dbTableView);
+				
+		panelView.add("North",srlpaneView);
+		
+		
+		dbTableView.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+		    @Override
+		    public void valueChanged(ListSelectionEvent event) 
+		    {
+		    	
+		        if (dbTableView.getSelectedRow() > -1) 
+		        {
+		            // print first column value from selected row
+		            //JOptionPane.showMessageDialog(null,dbTableView.getValueAt(dbTableView.getSelectedRow(), 0).toString());
+		        	//JOptionPane.showMessageDialog(null, obj.get("_id").toString());
+		            firstName.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 0).toString());
+		            lastName.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 1).toString());
+		            email.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 2).toString());
+		            password.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 3).toString());
+		            type.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 4).toString());
+		        }
+		    }
+		});		
+		
+		
+	}	
+	
+	MongoView()
+	{
 		
 		panelMain = new JPanel();
 		
-		this.setSize(600,180);
+		this.setSize(600,680);
 		this.setResizable(false);
-		this.setTitle("MONGO DB TEST");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setTitle("Users Information Management");
 		panelMain.setLayout(new BorderLayout());
 		this.add(panelMain);
+		
+		buildViewPanel();
+		panelMain.add("North",panelView);
 		
 		panelCenter = new JPanel();
 		panelCenter.setLayout(new GridBagLayout());		
@@ -87,9 +151,16 @@ public class MongoView extends JFrame{
 		gbc.gridx = 3;
 		gbc.gridy = 5;		
 		panelCenter.add(browseButton,gbc);	
-		gbc.gridx = 5;
-		gbc.gridy = 5;		
-		//panelCenter.add(removeallButton,gbc);		
+		//gbc.gridx = 4;
+		//gbc.gridy = 5;		
+		//panelCenter.add(removeallButton,gbc);					
+		//gbc.gridx = 0;
+		//gbc.gridy = 6;
+		//panelCenter.add(useridLabel, gbc);
+		//gbc.gridx = 1;
+		//gbc.gridy = 6;	
+		//panelCenter.add(userid, gbc);
+		
 		setVisible(true);
 		panelMain.add("Center",panelCenter);
 		
@@ -121,22 +192,21 @@ public class MongoView extends JFrame{
 		return type.getText();
 	}
 
-	void addCreateButtonListener(ActionListener listener){
-		createButton.addActionListener(listener);
-	}
 	
-	void addDeleteButtonListener(ActionListener listener){
-		deleteButton.addActionListener(listener);
+	void addMongoButtonListener(ActionListener listenForButton)
+	{
+		createButton.setActionCommand("CreateButton");
+		createButton.addActionListener(listenForButton);
+		deleteButton.setActionCommand("deleteButton");
+		deleteButton.addActionListener(listenForButton);
+		updateButton.setActionCommand("updateButton");
+		updateButton.addActionListener(listenForButton);	
+		browseButton.setActionCommand("browseButton");
+		browseButton.addActionListener(listenForButton);
+		//removeallButton.setActionCommand("removeallButton");
+		//removeallButton.addActionListener(listenForButton);		
+		
 	}
-	
-	void addUpdateButtonListener(ActionListener listener){
-		updateButton.addActionListener(listener);
-	}
-	
-	void addBrowseButtonListener(ActionListener listener){
-		browseButton.addActionListener(listener);
-	}
-	
 	
 	void displayErrorMessage(String errorMessage)
 	{

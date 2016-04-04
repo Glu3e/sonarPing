@@ -1,137 +1,153 @@
-
+/*
+ * Fix: delete and update function
+ */
 import java.net.UnknownHostException;
+
+
 import javax.swing.JOptionPane;
+
 import com.mongodb.*;
 
-
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class MongoModel 
 {
-	private static DB dB;
-	private static DBCollection dBCollection;
-	private static BasicDBObject basicDBObject;
+	private DB dB;
+	private DBCollection dBCollection;
+	//private BasicDBObject basicDBObject;
 	
 	public MongoModel()
 	{
 		try {
 			this.dB = (new MongoClient("localhost", 27017)).getDB("SonarPingDatabase");
 			
-			initialize();
-		} catch (UnknownHostException e) {
+			this.dBCollection = dB.getCollection("UserDB");
+			//this.basicDBObject = new BasicDBObject();
+		} 
+		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}	
 	
-	public void initialize(){
-		this.dBCollection = dB.getCollection("UserDB");
-		this.basicDBObject = new BasicDBObject();
-	}
-	
-	public void detached(){
-		this.dBCollection = null;
-		this.basicDBObject = null;
-	}
-	
-	
 	public void insertMongoDB(String first, String last, String email, String pass, String type)	
 	{	
+		BasicDBObject basicDBObject;
+		
 		try{
-			initialize(); 
-			this.basicDBObject.append("First Name",first);
-			this.basicDBObject.append("Last Name",last);
-			this.basicDBObject.append("Email",email);
-			this.basicDBObject.append("Password",pass);
-			this.basicDBObject.append("Type",type);
-			this.dBCollection.insert(new DBObject[] {basicDBObject});
-			detached();
-			JOptionPane.showMessageDialog(null, "Record Inserted Successfully");
+			basicDBObject = new BasicDBObject(); 
+			basicDBObject.append("First Name",first);
+			basicDBObject.append("Last Name",last);
+			basicDBObject.append("Email",email);
+			basicDBObject.append("Password",pass);
+			basicDBObject.append("Type",type);
+			this.dBCollection.insert(new DBObject[] {basicDBObject});		
 		}
 		
 		catch(Exception ex){
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
 		
+		close();
 	
 	}
 	
 	public void deleteMongoDB(String identifier)
 	{
-		try{
-			initialize();
-			this.basicDBObject.put("First Name", identifier);
-			this.dBCollection.remove(basicDBObject);
-			JOptionPane.showMessageDialog(null, "Record Deleted Successfully");
-			detached();
-		}
+		BasicDBObject basicDBObject;
 		
+		try
+		{	
+			basicDBObject = new BasicDBObject();		
+			basicDBObject.append("First Name", identifier);
+			this.dBCollection.remove(basicDBObject);
+		}		
 		catch(Exception ex){
+			JOptionPane.showMessageDialog(null, identifier);
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
+		
+		close();
 	}
 	
 	public void updateMongoDB(String first, String last, String email, String pass, String type)
 	{
+		BasicDBObject basicDBObject;
 		try{
-			initialize();
-			this.basicDBObject.put("First Name", first);
+			basicDBObject = new BasicDBObject();
+			basicDBObject.put("First Name", first);
 			this.dBCollection.remove(basicDBObject);
-			detached();
 			
-			initialize();
-			this.basicDBObject = new BasicDBObject(); 
+			basicDBObject = null;
+			basicDBObject = new BasicDBObject(); 
 			
-			this.basicDBObject.append("First Name",first);
-			this.basicDBObject.append("Last Name",last);
-			this.basicDBObject.append("Email",email);
-			this.basicDBObject.append("Password",pass);
-			this.basicDBObject.append("Type",type);
+			basicDBObject.append("First Name",first);
+			basicDBObject.append("Last Name",last);
+			basicDBObject.append("Email",email);
+			basicDBObject.append("Password",pass);
+			basicDBObject.append("Type",type);
 			
-			this.dBCollection.insert(new DBObject[] {basicDBObject});
-			
-			JOptionPane.showMessageDialog(null, "Record Updated Successfully");
-			
-			detached();
+			this.dBCollection.insert(new DBObject[] {basicDBObject});	
 		}
 		
 		catch(Exception ex){
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
+		
+		close();
 	}
 	
 	public String selectMongoDB(String key, String value)
 	{
+		BasicDBObject basicDBObject;
 		String str = "";
 		
-		initialize();
-		
-		this.basicDBObject.put(key, value);
-		DBCursor dbCursor = this.dBCollection.find(basicDBObject);
-		
-		while (dbCursor.hasNext()){ 
+		basicDBObject = new BasicDBObject();
+		basicDBObject.put(key, value);
+		DBCursor dbCursor = this.dBCollection.find(basicDBObject);		
+		while (dbCursor.hasNext()) 
 			str = str + " | " + dbCursor.next();
-		}
-		
-		dbCursor.close();
-		detached();
 		
 		
+		close();
 		return str;
 	}
 	
-	public String browseMongoDB()
+	
+	
+	public String browseMongoDB(MongoView theView, MongoModel theModel)
 	{
-		initialize();
 		String str = "";
+		String firstn, lastn, email, passwd, type/*, id*/;
 		DBCursor dbCursor = dBCollection.find();
-		while (dbCursor.hasNext()){ 
-			str = str + "\n" + dbCursor.next();
+		DBObject obj;
+		
+		int rowCount = theView.tblmodelView.getRowCount();
+		//Remove rows one by one from the end of the table
+		for (int i = rowCount - 1; i >= 0; i--) {
+			theView.tblmodelView.removeRow(i);
 		}
 		
-		dbCursor.close();
-		detached();
+		while (dbCursor.hasNext()) {
+			//System.out.println(dbCursor.next());
+			//str = str + "\n" + dbCursor.next();
+			obj = dbCursor.next();
+			str = str +	"\n" + obj;
+			//theView.userid.setText("");
+        	//theView.userid.setText(obj.get("_id").toString());
+        	//JOptionPane.showMessageDialog(null, obj.get("_id").toString());
+			firstn = (String)obj.get("First Name");
+			lastn  = (String)obj.get("Last Name");
+			email  = (String)obj.get("Email");
+			passwd = (String)obj.get("Password");
+			type   = (String)obj.get("Type");
+			//id     = obj.get("_id").toString();
+			theView.tblmodelView.addRow(new Object[] {firstn, lastn, email, passwd, type/*, id*/});			
+		}
 		
+		close();
 		return str;
 	}
 	
@@ -149,7 +165,8 @@ public class MongoModel
 		userTypeQuery.append("Type", "DEPENDENT");
 		emailQuery.append("Email","1");
 		
-
+		
+		
 		DBCursor dbCursor = dBCollection.find(userTypeQuery,emailQuery);
 		
 		while (dbCursor.hasNext()){ 
@@ -159,23 +176,21 @@ public class MongoModel
 		}
 		
 		
-		dbCursor.close();
+		close();
 		
 		return finalEmailString.substring(0, finalEmailString.length()-1);
 	}
 	
-	
-	
 	public int removeallMongo()
 	{
-		initialize();
 		int i=0;
 		
 		this.dBCollection.remove(new BasicDBObject());
-		detached();
-		
 		return i;
+	}
 	
+	public void close(){
+		//this.basicDBObject = null;
 	}
 
 }

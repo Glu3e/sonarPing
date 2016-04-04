@@ -1,17 +1,13 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-
-public class StartingPoint 
-{
-	public static void main(String [] args)
+public class TestJUnit 
+{	
+	//Integration Test
+	public static void main1(String [] args)
 	{
         final JFrame frame = new JFrame("");
         final JButton btnLogin = new JButton("");        
@@ -32,7 +28,6 @@ public class StartingPoint
         
         SonarPingModel model = new SonarPingModel("COM4");	
 		SonarPingView view = new SonarPingView();
-		SonarPingController controller = new SonarPingController(model, view,null);
-			
+		SonarPingController controller = new SonarPingController(model, view,null);			
 	}
 }
