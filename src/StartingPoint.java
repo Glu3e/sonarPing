@@ -9,8 +9,19 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+
+/**
+ * This is the driver class for the system
+ * @author Joshua, Zhaoduan
+ * @version 2.0
+ * @since 2016-01-30
+ */
 public class StartingPoint 
 {
+	/**
+	 * This is the main method for the driver class 
+	 * @param args
+	 */
 	public static void main(String [] args)
 	{
         final JFrame frame = new JFrame("");

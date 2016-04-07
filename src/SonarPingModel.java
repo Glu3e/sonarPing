@@ -11,8 +11,10 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
  /**
- * @author Jupiter
- * 
+ * This class deals with the sensor
+ * @author Joshua, Keitha, Pyojoon
+ * @version 2.0
+ * @since 2016-01-30
  *
  */
 public class SonarPingModel {
@@ -21,6 +23,11 @@ public class SonarPingModel {
 	static BufferedReader input;
 	static OutputStream output;
 	public static boolean  disarmButtonPresses;
+	
+	/**
+	 * This constructs a SonarPingModel
+	 * @param comPortName port which the sensor is pluged in
+	 */
 	SonarPingModel(String comPortName){
 		try{
 			//Identifying the port
@@ -42,6 +49,10 @@ public class SonarPingModel {
 		}
 	}
 	
+	/**
+	 * This is method deals with connection
+	 * @param x
+	 */
 	//Switching between the added event listener
 	public void toggle(int x){
 		
@@ -52,7 +63,9 @@ public class SonarPingModel {
 		}
 	}
 	
-	//Adds the event listener
+	/**
+	 * This method adds the event listener
+	 */
 	private void createConnection(){
 		try{
 			this.port.addEventListener(new Serial());
@@ -64,7 +77,9 @@ public class SonarPingModel {
 		}
 	}
 	
-	//Removes the event listener
+	/**
+	 * This method removes the event listener
+	 */
 	private void breakConnection(){
 		try{
 			this.port.removeEventListener();
@@ -75,6 +90,11 @@ public class SonarPingModel {
 		}
 	}
 	
+	/**
+	 * This class deals with the alarm, when the alarm happens, it will send a email 
+	 * @author Joshua 
+	 *
+	 */
 	public static class Serial implements SerialPortEventListener{
 
 		public synchronized void serialEvent(SerialPortEvent event) {

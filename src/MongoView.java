@@ -12,7 +12,12 @@ import javax.swing.event.ListSelectionListener;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
+/**
+ * This class implement a view which interacts with the users
+ * @author Zhaoduan, Akanimoh, Keitha
+ * @version 2.0
+ * @since 2016-03-10
+ */
 public class MongoView extends JFrame{
 	
 	private JLabel useridLabel = new JLabel("UserID: ");
@@ -48,7 +53,9 @@ public class MongoView extends JFrame{
 	public JTable dbTableView;
 	public DefaultTableModel tblmodelView;	
 	
-	
+	/**
+	 * This method build View Panel
+	 */
 	public void buildViewPanel()
 	{
 		panelView = new JPanel();
@@ -92,6 +99,9 @@ public class MongoView extends JFrame{
 		
 	}	
 	
+	/**
+	 * This constructs MongoView
+	 */
 	MongoView()
 	{
 		
@@ -167,32 +177,55 @@ public class MongoView extends JFrame{
 		
 	}
 	
+	/**
+	 * This method gets firstname
+	 * @return firstname
+	 */
 	public String getFirstName()
 	{
 		return firstName.getText();
 	}
 	
+	/**
+	 * This method gets lastname
+	 * @return lastname
+	 */
 	public String getLastName()
 	{
 		return lastName.getText();
 	}
 	
+	/**
+	 * This method gets email address
+	 * @return email address
+	 */
 	public String getEmail()
 	{
 		return email.getText();
 	}
 	
+	/**
+	 * This method gets password
+	 * @return password
+	 */
 	public String getPassword()
 	{
 		return password.getText();
 	}
 	
+	/**
+	 * This method gets user type
+	 * @return user type
+	 */
 	public String getUserType()
 	{
 		return type.getText();
 	}
 
-	
+	/**
+	 * This method adds listener
+	 * @param listenForButton
+	 */
 	void addMongoButtonListener(ActionListener listenForButton)
 	{
 		createButton.setActionCommand("CreateButton");
@@ -208,6 +241,10 @@ public class MongoView extends JFrame{
 		
 	}
 	
+	/**
+	 * This method displays a error message
+	 * @param errorMessage
+	 */
 	void displayErrorMessage(String errorMessage)
 	{
 		JOptionPane.showMessageDialog(this, errorMessage);

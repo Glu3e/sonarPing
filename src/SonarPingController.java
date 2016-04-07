@@ -8,8 +8,10 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author Jupiter
- *
+ * This class implements SonarPingController which links the Model, EmailModel, and View
+ * @author Joshua, Keitha, Pyojoon
+ * @version 2.0
+ * @since 2016-01-30
  */
 public class SonarPingController {
 	SonarPingModel sonarPingModel;
@@ -17,6 +19,12 @@ public class SonarPingController {
 	SonarPingView sonarPingView;
 	int toggle;
 	
+	/**
+	 * This constructs SonarPingController with specified view, emailmodel, and view
+	 * @param model mode which deals with the sensor
+	 * @param view  view which deals with the GUI
+	 * @param emailModel deals with the email
+	 */
 	SonarPingController(SonarPingModel model, SonarPingView view, SonarPingEmailModel emailModel){
 		this.sonarPingModel = model;
 		this.sonarPingView = view;
@@ -29,6 +37,12 @@ public class SonarPingController {
 		this.sonarPingModel.toggle(0);
 	}
 	
+	/**
+	 * This class deals with the user activities like click
+	 * @author Joshua 
+	 * @version 2.0
+	 * @since 2016-01-30
+	 */
 	public class SystemArmingListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			if(arg0.getSource() == sonarPingView.ArmJButton){

@@ -27,7 +27,12 @@ import javax.swing.table.*;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
+/**
+ * This class deals with the user GUI
+ * @author Joshua 
+ * @version 2.0
+ * @since 2016-01-30
+ */
 public class SonarPingView extends JFrame
 {
 	
@@ -72,7 +77,9 @@ public class SonarPingView extends JFrame
 	//public static JLabel[] SensorFlag = new JLabel[MaxSensor];
 	public static JTextField[] SensorFlag = new JTextField[MaxSensor];
 	
-	
+	/**
+	 * This constructs a SonarPingView
+	 */
 	public SonarPingView()
 	{
 		Init();
@@ -90,6 +97,9 @@ public class SonarPingView extends JFrame
 				
 		addListeners();
 	}
+	/**
+	 * This method builds a menu
+	 */
 	public void buildMenu()
 	{
 		configureItem = new JMenuItem("Configure");
@@ -108,6 +118,9 @@ public class SonarPingView extends JFrame
 		setJMenuBar(menuBar);
 	}
 	
+	/**
+	 * This method builds north panel in the view
+	 */
 	public void buildNorthPanel()
 	{
 		btnNorth1 = new JButton("Simulate adding a new sensor");
@@ -116,7 +129,9 @@ public class SonarPingView extends JFrame
 		panelNorth.add(btnNorth2);
 	}
 	
-	
+	/**
+	 * This method removes label and button from the center panel
+	 */
 	public void removefromCenterPanel()
 	{
 		int i;
@@ -137,6 +152,10 @@ public class SonarPingView extends JFrame
 			}
 		}	
 	}
+	
+	/**
+	 * This method builds center panel
+	 */
 	
 	public void buildCenterPanel()
 	{
@@ -176,7 +195,9 @@ public class SonarPingView extends JFrame
 		panelCenter.repaint();
 	}
 	
-	
+	/**
+	 * This method builds south panel
+	 */
 	public void buildSouthPanel()
 	{
 		armPanel = new JPanel(new GridLayout(1,1));
@@ -199,6 +220,9 @@ public class SonarPingView extends JFrame
 		main.add(colorPanel);
 	}
 
+	/**
+	 * This method build main panel
+	 */
 	public void buildMainPanel()
 	{			
 		panelMain = new JPanel();
@@ -220,6 +244,9 @@ public class SonarPingView extends JFrame
 		setVisible(true);
 	}
 	
+	/**
+	 * This method builds tab pane
+	 */
 	public void buildTabPane()
 	{
 		//tabPane.add("First Panel", panelView);
@@ -227,6 +254,10 @@ public class SonarPingView extends JFrame
 		add(tabPane);
 	}
 	
+	
+/**
+ * This method inits the view
+ */
 	public static void Init() 
 	{		
 		// TODO Auto-generated method stub	
@@ -242,14 +273,25 @@ public class SonarPingView extends JFrame
 		}		
 	}
 	
+	/**
+	 * This method adds a listener
+	 * @param armListener
+	 */
 	void armListener(ActionListener armListener){
 		ArmJButton.addActionListener(armListener);
 	}
 	
+	/**
+	 * This method adds a listener
+	 * @param disarmListener
+	 */
 	void disarmListener(ActionListener disarmListener){
 		DisarmJButton.addActionListener(disarmListener);
 	}
 	
+	/**
+	 * This method adds listeners for buttons
+	 */
 	public void addListeners() 
 	{
 		btnNorth1.setActionCommand("btnNorth1");
@@ -263,6 +305,10 @@ public class SonarPingView extends JFrame
 		SensorDisarm[0].addActionListener(new btnListener());
 	}
 	
+	/**
+	 * This method adds listenser for sensor
+	 * @param i
+	 */
 	private void addSensorListeners(int i)
 	{
 		String strarm = "SensorArm" + Integer.toString(i);
@@ -274,6 +320,10 @@ public class SonarPingView extends JFrame
 		SensorDisarm[i].addActionListener(new btnListener());
 	}
 	
+	/**
+	 * This method removes listenser for sensor
+	 * @param i
+	 */
 	private void removeSensorListeners(int i)
 	{
 		String s = "SensorArm" + Integer.toString(i);
@@ -287,7 +337,11 @@ public class SonarPingView extends JFrame
 	
 	
 	Object[] row = new Object[4];
-	//button listeners
+	/**
+	 * This class implements button listeners
+	 * @author Joshua 
+	 *
+	 */
 	public class btnListener implements ActionListener
 	{
 		int i;
@@ -429,86 +483,3 @@ public class SonarPingView extends JFrame
 	}
 
 }
-
-
-
-
-
-
-/*
-public class SonarPingView extends JFrame {
-	private JPanel armPanel;
-	private JPanel disarmPanel;
-	private JPanel main;
-	
-	
-	JPanel colorPanel;
-	JButton ArmJButton;
-	JButton DisarmJButton;
-	
-	JMenuBar menuBar;
-	JMenu menuDecleration;
-	
-	JMenuItem configureItem;
-	JMenuItem closeItem;
-
-	public SonarPingView(){
-
-		//setLayout( new BorderLayout());
-		armPanel = new JPanel(new GridLayout(1,1));
-		disarmPanel = new JPanel(new GridLayout(1,1));
-		
-		colorPanel = new JPanel();
-		menuBar = new JMenuBar();
-		
-		main = new JPanel();
-		main.setLayout(new GridLayout(2,2));
-		
-		configureItem = new JMenuItem("Configure");
-		configureItem.setToolTipText("Configure Data");
-		configureItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				MongoMVC mongo = new MongoMVC();
-				mongo.main(null);
-			}
-		});
-		
-		menuDecleration = new JMenu("File");		
-		menuDecleration.add(configureItem);
-		menuBar.add(menuDecleration);
-
-		ArmJButton = new JButton("Arm"); 
-		armPanel.add(ArmJButton);
-
-		DisarmJButton = new JButton("Disarm"); 
-		disarmPanel.add(DisarmJButton);
-
-		
-		setJMenuBar(menuBar);
-		//main.add(bar);
-		
-		main.add(armPanel);
-		main.add(disarmPanel);
-		main.add(colorPanel);
-		
-
-		//ArmJButton.setPreferredSize(new Dimension(200, 200));
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setSize(500, 200);
-		this.setResizable(false);
-		this.add(main);
-		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		this.setVisible( true );
-	}
-
-	
-	void armListener(ActionListener armListener){
-		ArmJButton.addActionListener(armListener);
-	}
-	
-	void disarmListener(ActionListener disarmListener){
-		DisarmJButton.addActionListener(disarmListener);
-	}
-}
-*/

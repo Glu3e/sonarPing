@@ -3,7 +3,12 @@ import javax.swing.JFrame;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
+/**
+ * This is the class for the integration test
+ * @author Zhaoduan
+ * @version 1.0
+ * @since 2016-04-01
+ */
 public class TestJUnit 
 {	
 	//Integration Test

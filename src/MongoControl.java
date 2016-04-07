@@ -6,7 +6,12 @@ import javax.swing.JOptionPane;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
+/**
+ * This is the class which is between the MongMVC and MongoControl, implements information verification etc.
+ * @author Zhaoduan, Ekwere, Keitha
+ * @version 2.0
+ * @since 2016-03-10
+ */
 public class MongoControl {
 	private MongoView theView;
 	private MongoModel theModel;
@@ -17,6 +22,11 @@ public class MongoControl {
 	private String email;
 	private String type;
 	
+	/**
+	 * This constructs a MongoControl with a specified View and Model
+	 * @param theView
+	 * @param theModel
+	 */
 	public MongoControl(MongoView theView, MongoModel theModel)
 	{
 		this.theView = theView;
@@ -25,6 +35,10 @@ public class MongoControl {
 		this.theView.addMongoButtonListener(new MongoButtonListener());		
 	}
 	
+	/**
+	 * This method validate the firstName, lastName, password and email which input from View
+	 * @return if pass the validation, return true, otherwise return false
+	 */
 	public Boolean validate()
 	{
 		Boolean rt=false;
@@ -80,6 +94,9 @@ public class MongoControl {
 		return rt;
 	}
 	
+	/**
+	 * This method clear the textfield which are in the View.
+	 */
 	public void clearFields(){
 		theView.firstName.setText("");
 		theView.lastName.setText("");
@@ -88,9 +105,16 @@ public class MongoControl {
 		theView.type.setText("");
 	}
 	
+	/**
+	 * This class responds the user activies like click 'Create','Delete' button in the View
+	 * @author Zhaoduan
+	 *
+	 */
 	class MongoButtonListener implements ActionListener
 	{
-		
+		/**
+		 * This method deals with the click activities that user click the button in View
+		 */
 		public void actionPerformed(ActionEvent e) 
 		{
 			String str;

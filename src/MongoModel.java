@@ -10,6 +10,12 @@ import com.mongodb.*;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+/**
+ * This class deals with the all the requests related with Mongo Database
+ * @author Zhaoduan, Akanimoh, Keitha
+ * @vision v2.0
+ * @since 2016-03-10
+ */
 
 public class MongoModel 
 {
@@ -17,6 +23,9 @@ public class MongoModel
 	private DBCollection dBCollection;
 	//private BasicDBObject basicDBObject;
 	
+	/**
+	 * This constructs MongoModel
+	 */
 	public MongoModel()
 	{
 		try {
@@ -30,8 +39,16 @@ public class MongoModel
 			e.printStackTrace();
 		}
 		
-	}	
+	}
 	
+	/**
+	 * This method insert a record in the Mongo Database
+	 * @param first firstname
+	 * @param last  lastname
+	 * @param email email address
+	 * @param pass  password
+	 * @param type  type of the user, Home owner or dependent
+	 */
 	public void insertMongoDB(String first, String last, String email, String pass, String type)	
 	{	
 		BasicDBObject basicDBObject;
@@ -54,6 +71,10 @@ public class MongoModel
 	
 	}
 	
+	/**
+	 * This method deletes a record from Mongo Database
+	 * @param identifier
+	 */
 	public void deleteMongoDB(String identifier)
 	{
 		BasicDBObject basicDBObject;
@@ -72,6 +93,14 @@ public class MongoModel
 		close();
 	}
 	
+	/**
+	 * This mothod updates a record which is in the Mongo Database
+	 * @param first firstname
+	 * @param last  lastname
+	 * @param email email address
+	 * @param pass  password
+	 * @param type  type of user, Homeowner or dependent
+	 */
 	public void updateMongoDB(String first, String last, String email, String pass, String type)
 	{
 		BasicDBObject basicDBObject;
@@ -99,6 +128,12 @@ public class MongoModel
 		close();
 	}
 	
+	/**
+	 * This method inquires the Mongo Database with a key value
+	 * @param key   Key for the Mongo DB
+	 * @param value Value for the Mongo DB
+	 * @return
+	 */
 	public String selectMongoDB(String key, String value)
 	{
 		BasicDBObject basicDBObject;
@@ -116,7 +151,12 @@ public class MongoModel
 	}
 	
 	
-	
+	/**
+	 * This mothod browses all the user information that are stored in the Mongo Database
+	 * @param theView  the view which calls the method
+	 * @param theModel the model which relates the method
+	 * @return
+	 */
 	public String browseMongoDB(MongoView theView, MongoModel theModel)
 	{
 		String str = "";
@@ -151,6 +191,10 @@ public class MongoModel
 		return str;
 	}
 	
+	/**
+	 * This method inquires all the email information and return it as a string
+	 * @return
+	 */
 	public String getAllEmails()
 	{
 		String str = "";
@@ -181,6 +225,10 @@ public class MongoModel
 		return finalEmailString.substring(0, finalEmailString.length()-1);
 	}
 	
+	/**
+	 * This method removes the Mongo Database connection
+	 * @return
+	 */
 	public int removeallMongo()
 	{
 		int i=0;
@@ -189,6 +237,9 @@ public class MongoModel
 		return i;
 	}
 	
+	/**
+	 * This methods is a empty method.
+	 */
 	public void close(){
 		//this.basicDBObject = null;
 	}

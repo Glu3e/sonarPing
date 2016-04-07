@@ -11,8 +11,10 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author Jupiter
- *
+ * This class deals with the sending email 
+ * @author Joshua, Pyojoon
+ * @version 2.0
+ * @since 2016-01-10
  */
 public class SonarPingEmailModel implements Runnable {
 	private String to;
@@ -23,6 +25,13 @@ public class SonarPingEmailModel implements Runnable {
 	private Properties props;
 	private Session session;
 
+	/**
+	 * This constructs a SonarPingEmailModel
+	 * @param to		email to
+	 * @param from		email from
+	 * @param username	user name who sends the email
+	 * @param password  password which relates with the user name
+	 */
 	public SonarPingEmailModel(String to, String from, String username, String password){
 		this.to = to;
 		this.from = from;
@@ -36,6 +45,9 @@ public class SonarPingEmailModel implements Runnable {
 		this.props.put("mail.smtp.port", "587");
 	}
 	
+	/**
+	 * This method initialize a session
+	 */
 	public void sessionInitialize(){
 		// Get the Session object.
 		session = Session.getInstance(props, new javax.mail.Authenticator() {
@@ -45,6 +57,9 @@ public class SonarPingEmailModel implements Runnable {
 		});
 	}
 
+	/**
+	 * This method deals with sending a email 
+	 */
 	public void run(){
 		try {
 			// Create a default MimeMessage object.

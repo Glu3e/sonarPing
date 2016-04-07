@@ -9,7 +9,13 @@ import static java.lang.System.out;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
+/**
+ * This class implements the log in functionality
+ * @author Zhaoduan, Ekwere, Keitha
+ * @version 1.0
+ * @since 2016-03-20
+ *
+ */
 public class MyLoginDialog extends JDialog {
  
     private JTextField tfUsername;
@@ -22,6 +28,10 @@ public class MyLoginDialog extends JDialog {
     public static boolean homeowner=false;
     private MongoModel validateUser = new MongoModel();
  
+    /**
+     * This constructs a MyLoginDialgo
+     * @param parent
+     */
     public MyLoginDialog(Frame parent) {
         super(parent, "SonarPing Login", true);
         //
@@ -99,18 +109,36 @@ public class MyLoginDialog extends JDialog {
         setLocationRelativeTo(parent);
     }
  
+    /**
+     * This methods returns user name
+     * @return user name
+     */
     public String getUsername() {
         return tfUsername.getText().trim();
     }
  
+    /**
+     * This methods returns password
+     * @return password
+     */
     public String getPassword() {
         return new String(pfPassword.getPassword());
     }
  
+    /**
+     * This method check whether it is successful or not
+     * @return if it is successful returns true, otherwise returns false
+     */
     public boolean isSucceeded() {
         return succeeded;
     }
     
+    /**
+     * This method validate the account
+     * @param name user name
+     * @param password password
+     * @return if it pass the validation returns true, otherwise returns false
+     */
     private boolean authenticate(String name, String password)
     {
     	String str;

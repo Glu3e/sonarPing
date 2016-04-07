@@ -20,7 +20,20 @@ import javax.mail.internet.MimeMessage;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+
+/**
+ * This class tests the email functionality
+ * @author Joshua, Pyojoon
+ * @version 1.0
+ * @since 2016-02-18
+ */
+
 public class EmailTest {
+
+	/**
+	 * This method is the driver to test the email functionality
+	 * @param args
+	 */
 	public static void main(String [] args){
 		/*System.out.println("Hello");
 
