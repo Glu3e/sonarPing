@@ -70,8 +70,6 @@ public class MongoView extends JFrame{
 		dbTableView = new JTable(tblmodelView);
 		dbTableView.setBackground(Color.lightGray);
 		dbTableView.setForeground(Color.black);
-		//Font font = new Font("",1,14);
-		//dbTableView.setFont(font);	
 		srlpaneView = new JScrollPane(dbTableView);
 				
 		panelView.add("North",srlpaneView);
@@ -84,9 +82,6 @@ public class MongoView extends JFrame{
 		    	
 		        if (dbTableView.getSelectedRow() > -1) 
 		        {
-		            // print first column value from selected row
-		            //JOptionPane.showMessageDialog(null,dbTableView.getValueAt(dbTableView.getSelectedRow(), 0).toString());
-		        	//JOptionPane.showMessageDialog(null, obj.get("_id").toString());
 		            firstName.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 0).toString());
 		            lastName.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 1).toString());
 		            email.setText(dbTableView.getValueAt(dbTableView.getSelectedRow(), 2).toString());
@@ -161,15 +156,6 @@ public class MongoView extends JFrame{
 		gbc.gridx = 3;
 		gbc.gridy = 5;		
 		panelCenter.add(browseButton,gbc);	
-		//gbc.gridx = 4;
-		//gbc.gridy = 5;		
-		//panelCenter.add(removeallButton,gbc);					
-		//gbc.gridx = 0;
-		//gbc.gridy = 6;
-		//panelCenter.add(useridLabel, gbc);
-		//gbc.gridx = 1;
-		//gbc.gridy = 6;	
-		//panelCenter.add(userid, gbc);
 		
 		setVisible(true);
 		panelMain.add("Center",panelCenter);
@@ -235,9 +221,7 @@ public class MongoView extends JFrame{
 		updateButton.setActionCommand("updateButton");
 		updateButton.addActionListener(listenForButton);	
 		browseButton.setActionCommand("browseButton");
-		browseButton.addActionListener(listenForButton);
-		//removeallButton.setActionCommand("removeallButton");
-		//removeallButton.addActionListener(listenForButton);		
+		browseButton.addActionListener(listenForButton);	
 		
 	}
 	

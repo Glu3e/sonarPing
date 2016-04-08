@@ -35,20 +35,6 @@ public class EmailTest {
 	 * @param args
 	 */
 	public static void main(String [] args){
-		/*System.out.println("Hello");
-
-		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-
-		VideoCapture cap = new VideoCapture(0);
-
-
-		Mat m = new Mat(5, 10, CvType.CV_8UC1, new Scalar(0));
-		    System.out.println("OpenCV Mat: " + m);
-		    Mat mr1 = m.row(1);
-		    mr1.setTo(new Scalar(1));
-		    Mat mc5 = m.col(5);
-		    mc5.setTo(new Scalar(5));
-		    System.out.println("OpenCV Mat data:\n" + m.dump());*/
 
 		// Recipient's email ID needs to be mentioned.
 		String to = "tpotm9@gmail.com, dannywang0619@gmail.com";

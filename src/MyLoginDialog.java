@@ -162,14 +162,11 @@ public class MyLoginDialog extends JDialog {
     		for (String s:splitArray)
     		{        			 
     			i = s.compareTo(matchpassword);
-    			//JOptionPane.showMessageDialog(null, s+" vs "+matchpassword + " i="+Integer.toString(i));
     			if(i==0)
     			{    				
     				for (String s1:splitArray1)
     				{
     					i = s1.compareToIgnoreCase(matchtype);
-    					//out.print('*'+s1+'*'+" vs "+'*'+matchtype+'*' + " i="+Integer.toString(i));
-    					//out.print("\r\n");
     					if(i==0)
     						homeowner = true;
     				}
@@ -180,7 +177,6 @@ public class MyLoginDialog extends JDialog {
     	}
     	else 
     	{
-    		//JOptionPane.showMessageDialog(null, str);
     		return false;
     	}
     }

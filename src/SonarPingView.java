@@ -395,83 +395,67 @@ public class SonarPingView extends JFrame
 				}
 				else if(e.getActionCommand().equals("SensorArm0"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 0 CLICK!");
 					SensorFlag[0].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorArm1"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 1 CLICK!");
 					SensorFlag[1].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorArm2"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 2 CLICK!");
 					SensorFlag[2].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorArm3"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 3 CLICK!");
 					SensorFlag[3].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorArm4"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 4 CLICK!");
 					SensorFlag[4].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorArm5"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 5 CLICK!");
 					SensorFlag[5].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorArm6"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 6 CLICK!");
 					SensorFlag[6].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorArm7"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[7].setBackground(Color.green);
 				}
 				
 				else if(e.getActionCommand().equals("SensorDisarm0"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[0].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm1"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[1].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm2"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[2].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm3"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[3].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm4"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[4].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm5"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[5].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm6"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[6].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm7"))
 				{		
-					//JOptionPane.showMessageDialog(null,"SensorArm 7 CLICK!");
 					SensorFlag[7].setBackground(Color.red);
 				}
 			}
