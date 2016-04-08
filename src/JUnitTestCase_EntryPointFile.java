@@ -19,8 +19,13 @@ public class JUnitTestCase_EntryPointFile {
 	@Test
 	public void creation() {
 		EntryPointFile thepoint;
+		String args[] = {"",""};
 		
 		thepoint = new EntryPointFile();
+		/**
+		 * Test main method 
+		 */
+		thepoint.main(args);
 	}
 
 }

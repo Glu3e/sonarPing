@@ -19,8 +19,13 @@ public class JUnitTestCase_EmailTest {
 	@Test
 	public void creation() {
 		EmailTest emailtest;
+		String args[] = {"",""};
 		
 		emailtest = new EmailTest();
+		/**
+		 * Test main method 
+		 */
+		emailtest.main(args);
 	}
 
 }

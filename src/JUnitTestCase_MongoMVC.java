@@ -19,8 +19,14 @@ public class JUnitTestCase_MongoMVC {
 	@Test
 	public void creation() {
 		MongoMVC theMongoMVC;
+		String args[] = {"",""};
 		
 		theMongoMVC = new MongoMVC();
+		
+		/**
+		 * Test main method 
+		 */
+		theMongoMVC.main(args);
 	}
 
 }

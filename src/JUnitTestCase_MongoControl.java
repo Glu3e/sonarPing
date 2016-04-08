@@ -24,6 +24,15 @@ public class JUnitTestCase_MongoControl {
 		MongoModel theModel = new MongoModel();;
 		
 		theControl = new MongoControl(theView, theModel);
+		/**
+		 * Test clearFields method 
+		 */
+		theControl.clearFields();
+		
+		/**
+		 * Test validate method 
+		 */
+		assertFalse(theControl.validate());
 	}
 
 }

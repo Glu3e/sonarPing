@@ -21,6 +21,16 @@ public class JUnitTestCase_MongoModel {
 		MongoModel theModel;
 		
 		theModel = new MongoModel();
+		
+		/**
+		 * Test insert/update/delete method 
+		 */
+		theModel.insertMongoDB("JUnitTest1", "MongoModel", "JUnitTest1@email.com", "123123", "Homeowner");
+		theModel.insertMongoDB("JUnitTest2", "MongoModel", "JUnitTest2@email.com", "456456", "Independent");
+		theModel.updateMongoDB("JUnitTest1", "MongoModel", "JUnitTest1@email.com", "111111", "Homeowner");
+		theModel.updateMongoDB("JUnitTest2", "MongoModel", "JUnitTest2@email.com", "222222", "Independent");
+		theModel.deleteMongoDB("JUnitTest1");
+		theModel.deleteMongoDB("JUnitTest2");
 	}
 
 }

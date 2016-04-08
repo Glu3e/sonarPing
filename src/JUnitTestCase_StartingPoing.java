@@ -19,8 +19,14 @@ public class JUnitTestCase_StartingPoing {
 	@Test
 	public void creation() {
 		StartingPoint thepoint;
+		String args[] = {"",""};
 		
 		thepoint = new StartingPoint();
+		
+		/**
+		 * Test main method
+		 */
+		thepoint.main(args);
 	}
 
 }

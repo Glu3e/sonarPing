@@ -23,7 +23,7 @@ public class JUnitTestCase_MyLoginDialog {
 		MyLoginDialog theLoginDialog;
 		final JFrame frame = new JFrame("");
 		
-		theLoginDialog = new MyLoginDialog(frame);
+		theLoginDialog = new MyLoginDialog(frame);		
 	}
 
 }

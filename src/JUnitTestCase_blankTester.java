@@ -19,8 +19,14 @@ public class JUnitTestCase_blankTester {
 	@Test
 	public void creation() {
 		blankTester theblanktester;
+		String args[] = {"",""};
 		
 		theblanktester = new blankTester();
+		
+		/**
+		 * Test main method 
+		 */
+		theblanktester.main(args);
 	}
 
 }
