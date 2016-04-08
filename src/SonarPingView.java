@@ -1,5 +1,6 @@
 //import java.awt.BorderLayout;
 import java.awt.Color;
+
 //import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ import java.awt.Window.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.*;
 import java.util.*;
 import javax.swing.*;
@@ -27,13 +29,15 @@ import javax.swing.table.*;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+
+
 /**
  * This class deals with the user GUI
  * @author Joshua 
  * @version 2.0
  * @since 2016-01-30
  */
-public class SonarPingView extends JFrame
+public class SonarPingView extends JFrame implements KeyListener
 {
 	
 	public JTabbedPane tabPane = new JTabbedPane();
@@ -94,7 +98,10 @@ public class SonarPingView extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(640,680);
 		setVisible(true);
-				
+
+		addKeyListener(this);
+		setFocusable(true);
+	    setFocusTraversalKeysEnabled(false);
 		addListeners();
 	}
 	/**
@@ -207,17 +214,18 @@ public class SonarPingView extends JFrame
 		menuBar = new JMenuBar();
 		
 		main = new JPanel();
-		main.setLayout(new GridLayout(2,2));
+		main.setLayout(new GridLayout(1,3));
 		
 		ArmJButton = new JButton("Arm"); 
 		armPanel.add(ArmJButton);
 
 		DisarmJButton = new JButton("Disarm"); 
 		disarmPanel.add(DisarmJButton);
-
+		
+		main.add(colorPanel);
 		main.add(armPanel);
 		main.add(disarmPanel);
-		main.add(colorPanel);
+
 	}
 
 	/**
@@ -231,7 +239,7 @@ public class SonarPingView extends JFrame
 		panelNorth = new JPanel();
 		panelNorth.setLayout(new FlowLayout());
 		buildNorthPanel();
-		panelMain.add("North",panelNorth);
+		panelMain.add("South",panelNorth);
 		
 		panelCenter = new JPanel();
 		panelCenter.setLayout(new GridBagLayout());		
@@ -239,7 +247,11 @@ public class SonarPingView extends JFrame
 		panelMain.add("Center",panelCenter);
 		
 		buildSouthPanel();
-		panelMain.add("South",main);
+		panelMain.add("North",main);
+		
+
+		panelMain.setFocusable(true);
+		panelMain.requestFocusInWindow();
 		
 		setVisible(true);
 	}
@@ -294,10 +306,12 @@ public class SonarPingView extends JFrame
 	 */
 	public void addListeners() 
 	{
+			
 		btnNorth1.setActionCommand("btnNorth1");
 		btnNorth1.addActionListener(new btnListener());
 		btnNorth2.setActionCommand("btnNorth2");
 		btnNorth2.addActionListener(new btnListener());
+		
 		
 		SensorArm[0].setActionCommand("SensorArm0");
 		SensorArm[0].addActionListener(new btnListener());
@@ -395,69 +409,74 @@ public class SonarPingView extends JFrame
 				}
 				else if(e.getActionCommand().equals("SensorArm0"))
 				{		
-					SensorFlag[0].setBackground(Color.green);
+					SensorFlag[0].setBackground(Color.red);
+					SensorArm[0].setFocusable(false);
 				}
 				else if(e.getActionCommand().equals("SensorArm1"))
 				{		
-					SensorFlag[1].setBackground(Color.green);
+					SensorFlag[1].setBackground(Color.red);
+					SensorArm[1].setFocusable(false);
 				}
 				else if(e.getActionCommand().equals("SensorArm2"))
 				{		
-					SensorFlag[2].setBackground(Color.green);
+					SensorFlag[2].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm3"))
 				{		
-					SensorFlag[3].setBackground(Color.green);
+					SensorFlag[3].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm4"))
 				{		
-					SensorFlag[4].setBackground(Color.green);
+					SensorFlag[4].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm5"))
 				{		
-					SensorFlag[5].setBackground(Color.green);
+					SensorFlag[5].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm6"))
 				{		
-					SensorFlag[6].setBackground(Color.green);
+					SensorFlag[6].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm7"))
 				{		
-					SensorFlag[7].setBackground(Color.green);
+					SensorFlag[7].setBackground(Color.red);
 				}
 				
 				else if(e.getActionCommand().equals("SensorDisarm0"))
 				{		
-					SensorFlag[0].setBackground(Color.red);
+					SensorFlag[0].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm1"))
 				{		
-					SensorFlag[1].setBackground(Color.red);
+					SensorFlag[1].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm2"))
 				{		
-					SensorFlag[2].setBackground(Color.red);
+					SensorFlag[2].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm3"))
 				{		
-					SensorFlag[3].setBackground(Color.red);
+					SensorFlag[3].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm4"))
 				{		
-					SensorFlag[4].setBackground(Color.red);
+					SensorFlag[4].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm5"))
 				{		
-					SensorFlag[5].setBackground(Color.red);
+					SensorFlag[5].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm6"))
 				{		
-					SensorFlag[6].setBackground(Color.red);
+					SensorFlag[6].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm7"))
 				{		
-					SensorFlag[7].setBackground(Color.red);
+					SensorFlag[7].setBackground(Color.green);
 				}
+				
+				panelMain.setFocusable(true);
+				panelMain.requestFocusInWindow();
 			}
 			catch(Exception ex)
 			{
@@ -465,5 +484,51 @@ public class SonarPingView extends JFrame
 			}			
 		}		
 	}
+	
+    public void keyPressed(KeyEvent e) {
+        System.out.println("keyPressed");
+    }
+
+    public void keyReleased(KeyEvent e) {
+    	int i;
+    	System.out.println("keyReleased");
+    	
+    	if( (e.getKeyCode()== KeyEvent.VK_A) || (e.getKeyCode()== KeyEvent.VK_INSERT) )
+    	{
+			for(i=1;i<MaxSensor;i++)
+			{
+				if( (SensorList[i]==SLOTIDEL) )
+				{
+					SensorList[i] = SLOTUSED;
+					buildCenterPanel();
+					addSensorListeners(i);							
+					break;
+				}
+			}
+			if(i==MaxSensor)
+				JOptionPane.showMessageDialog(null,"Archive the maximum sensors");
+			
+			setVisible(true);
+    	}    	
+        if( (e.getKeyCode()== KeyEvent.VK_D) || (e.getKeyCode()== KeyEvent.VK_DELETE) )
+        {
+			for(i=MaxSensor-1;i>0;i--)
+			{
+				if(SensorList[i]==SLOTUSED)
+				{
+					SensorList[i] = SLOTREMOVED;
+					removeSensorListeners(i);
+					removefromCenterPanel();
+					setVisible(true);
+					break;
+				}
+			}
+			if(i==0)
+				JOptionPane.showMessageDialog(null,"You can't remove sensor 0");
+        }
+    }
+    public void keyTyped(KeyEvent e) {
+        System.out.println("keyTyped");
+    }
 
 }

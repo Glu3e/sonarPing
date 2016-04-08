@@ -148,7 +148,6 @@ public class MongoControl {
 				else if(e.getActionCommand().equals("browseButton"))
 				{
 					str = theModel.browseMongoDB(theView, theModel);
-					//JOptionPane.showMessageDialog(null,str);
 				}	
 				else if(e.getActionCommand().equals("removeallButton"))
 				{
