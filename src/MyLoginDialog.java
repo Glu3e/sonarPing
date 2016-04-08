@@ -64,6 +64,31 @@ public class MyLoginDialog extends JDialog {
         cs.gridwidth = 2;
         panel.add(pfPassword, cs);
         panel.setBorder(new LineBorder(Color.GRAY));
+        pfPassword.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent e){
+        		if(e.getSource()==pfPassword)
+        		{
+                    if (authenticate(getUsername(), getPassword())) {
+                        JOptionPane.showMessageDialog(MyLoginDialog.this,
+                                "Hi " + getUsername() + "!   You have successfully logged in.",
+                                "Login",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        succeeded = true;
+                        dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(MyLoginDialog.this,
+                                "Invalid username or password",
+                                "Login",
+                                JOptionPane.ERROR_MESSAGE);
+                        // reset username and password
+                        tfUsername.setText("");
+                        pfPassword.setText("");
+                        succeeded = false;
+     
+                    }
+        		}
+        	}
+        });
  
         btnLogin = new JButton("Login");
  
