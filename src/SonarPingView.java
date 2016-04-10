@@ -130,10 +130,10 @@ public class SonarPingView extends JFrame implements KeyListener
 	 */
 	public void buildNorthPanel()
 	{
-		btnNorth1 = new JButton("Simulate adding a new sensor");
+		/*btnNorth1 = new JButton("Simulate adding a new sensor");
 		panelNorth.add(btnNorth1);
 		btnNorth2 = new JButton("Simulate removing a existed sensor");
-		panelNorth.add(btnNorth2);
+		panelNorth.add(btnNorth2);*/
 	}
 	
 	/**
@@ -307,10 +307,10 @@ public class SonarPingView extends JFrame implements KeyListener
 	public void addListeners() 
 	{
 			
-		btnNorth1.setActionCommand("btnNorth1");
+		/*btnNorth1.setActionCommand("btnNorth1");
 		btnNorth1.addActionListener(new btnListener());
 		btnNorth2.setActionCommand("btnNorth2");
-		btnNorth2.addActionListener(new btnListener());
+		btnNorth2.addActionListener(new btnListener());*/
 		
 		
 		SensorArm[0].setActionCommand("SensorArm0");
