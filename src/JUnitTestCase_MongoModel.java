@@ -32,5 +32,4 @@ public class JUnitTestCase_MongoModel {
 		theModel.deleteMongoDB("JUnitTest1");
 		theModel.deleteMongoDB("JUnitTest2");
 	}
-
 }

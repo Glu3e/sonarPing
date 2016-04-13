@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -80,6 +81,8 @@ public class SonarPingView extends JFrame implements KeyListener
 	public static JButton[] SensorDisarm = new JButton[MaxSensor];
 	//public static JLabel[] SensorFlag = new JLabel[MaxSensor];
 	public static JTextField[] SensorFlag = new JTextField[MaxSensor];
+	public static String [] sensorList = new String[MaxSensor];
+	
 	
 	/**
 	 * This constructs a SonarPingView
@@ -123,6 +126,20 @@ public class SonarPingView extends JFrame implements KeyListener
 		menuDecleration.add(configureItem);
 		menuBar.add(menuDecleration);
 		setJMenuBar(menuBar);
+		
+		// Add an Quit JMenuItem
+		JMenuItem mntmClose = new JMenuItem("Close");
+		mntmClose.setMnemonic(KeyEvent.VK_Q);
+		mntmClose.setAccelerator(KeyStroke.getKeyStroke(
+		             KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
+		mntmClose.setToolTipText("Exit application");
+		mntmClose.addActionListener(new ActionListener() {
+		        public void actionPerformed(ActionEvent event) {
+		            System.exit(0);
+		        }
+
+		    });
+		menuDecleration.add(mntmClose);
 	}
 	
 	/**
@@ -282,7 +299,23 @@ public class SonarPingView extends JFrame implements KeyListener
 			SensorFlag[i] = new JTextField("    SENSOR   "+Integer.toString(i)+"    ");
 			SensorArm[i] = new JButton("ARM("+Integer.toString(i)+")");
 			SensorDisarm[i] = new JButton("DISARM("+Integer.toString(i)+")");
-		}		
+			sensorList[i]="";
+		}
+		sensorList[0] = "Sensor " + Integer.toString(0);
+		
+		String str;
+		int k;
+		java.util.Date date = new java.util.Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+		String formattedDate = sdf.format(date);
+		str = "Current sensolList situation at " + formattedDate +"\r\n";
+		System.out.print(str);
+		for (k=0;k<MaxSensor;k++)
+		{
+			str = "["+Integer.toString(k)+"]="+sensorList[k]+"; ";
+			System.out.print(str);
+		}
+		System.out.print("\r\n");
 	}
 	
 	/**
@@ -328,10 +361,26 @@ public class SonarPingView extends JFrame implements KeyListener
 		String strarm = "SensorArm" + Integer.toString(i);
 		SensorArm[i].setActionCommand(strarm);
 		SensorArm[i].addActionListener(new btnListener());
+		sensorList[i] = "Sensor " + Integer.toString(i);
+		
 		
 		String strdisarm = "SensorDisarm" + Integer.toString(i);
 		SensorDisarm[i].setActionCommand(strdisarm);
 		SensorDisarm[i].addActionListener(new btnListener());
+		
+		String str;
+		int k;
+		java.util.Date date = new java.util.Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+		String formattedDate = sdf.format(date);
+		str = "Current sensolList situation at " + formattedDate +"\r\n";
+		System.out.print(str);
+		for (k=0;k<MaxSensor;k++)
+		{
+			str = "["+Integer.toString(k)+"]="+sensorList[k]+"; ";
+			System.out.print(str);
+		}
+		System.out.print("\r\n\r\n");
 	}
 	
 	/**
@@ -486,12 +535,10 @@ public class SonarPingView extends JFrame implements KeyListener
 	}
 	
     public void keyPressed(KeyEvent e) {
-        System.out.println("keyPressed");
     }
 
     public void keyReleased(KeyEvent e) {
     	int i;
-    	System.out.println("keyReleased");
     	
     	if( (e.getKeyCode()== KeyEvent.VK_A) || (e.getKeyCode()== KeyEvent.VK_INSERT) )
     	{
@@ -528,7 +575,7 @@ public class SonarPingView extends JFrame implements KeyListener
         }
     }
     public void keyTyped(KeyEvent e) {
-        System.out.println("keyTyped");
+        //System.out.println("keyTyped");
     }
 
 }

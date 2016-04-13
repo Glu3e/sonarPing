@@ -173,7 +173,7 @@ public class MyLoginDialog extends JDialog {
     	int i;
     	
     	
-    	if( (name.compareToIgnoreCase("Test")==0) && (password.compareToIgnoreCase("Test")==0) )
+    	if( (name.compareToIgnoreCase("admin")==0) && (password.compareToIgnoreCase("225588")==0) )
     	{
     		homeowner = true;
     		return true;
