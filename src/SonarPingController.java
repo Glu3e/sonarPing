@@ -52,6 +52,7 @@ public class SonarPingController {
 				sonarPingView.ArmJButton.setEnabled(false);
 				sonarPingView.DisarmJButton.setEnabled(true);
 				sonarPingModel.disarmButtonPresses = false;
+				sonarPingModel.sensorList = sonarPingView.sensorList;
 				
 			}else if(arg0.getSource() == sonarPingView.DisarmJButton){
 				
@@ -60,6 +61,7 @@ public class SonarPingController {
 				sonarPingView.ArmJButton.setEnabled(true);
 				sonarPingView.DisarmJButton.setEnabled(false);
 				sonarPingModel.disarmButtonPresses = true;
+				sonarPingModel.sensorList = sonarPingView.sensorList;
 			}
 		}
 	}

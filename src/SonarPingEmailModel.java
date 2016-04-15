@@ -76,11 +76,7 @@ public class SonarPingEmailModel implements Runnable {
 			message.setSubject("Testing Subject");
 
 			// Now set the actual message
-			message.setText("Hello, this is sample for to check send " +
-					"email using JavaMailAPI " +
-					"PYOJOON IT WORKS !!!!!!" +
-					"" +
-					"");
+			message.setText("HEELO EVERYBODY, THIS IS GOING TO BE THE FINAL TEST FROM SONARPINGMODEL.");
 
 			// Send message
 			Transport.send(message);

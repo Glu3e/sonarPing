@@ -310,7 +310,7 @@ public class SonarPingView extends JFrame implements KeyListener
 		String formattedDate = sdf.format(date);
 		str = "Current sensolList situation at " + formattedDate +"\r\n";
 		System.out.print(str);
-		for (k=0;k<MaxSensor;k++)
+		for (k = 0; k < MaxSensor; k++)
 		{
 			str = "["+Integer.toString(k)+"]="+sensorList[k]+"; ";
 			System.out.print(str);
@@ -361,26 +361,27 @@ public class SonarPingView extends JFrame implements KeyListener
 		String strarm = "SensorArm" + Integer.toString(i);
 		SensorArm[i].setActionCommand(strarm);
 		SensorArm[i].addActionListener(new btnListener());
-		sensorList[i] = "Sensor " + Integer.toString(i);
 		
 		
 		String strdisarm = "SensorDisarm" + Integer.toString(i);
 		SensorDisarm[i].setActionCommand(strdisarm);
 		SensorDisarm[i].addActionListener(new btnListener());
 		
-		String str;
+		/*String str;
 		int k;
 		java.util.Date date = new java.util.Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
 		String formattedDate = sdf.format(date);
 		str = "Current sensolList situation at " + formattedDate +"\r\n";
 		System.out.print(str);
+		
+		
 		for (k=0;k<MaxSensor;k++)
 		{
 			str = "["+Integer.toString(k)+"]="+sensorList[k]+"; ";
 			System.out.print(str);
 		}
-		System.out.print("\r\n\r\n");
+		System.out.print("\r\n\r\n");*/
 	}
 	
 	/**
@@ -392,10 +393,62 @@ public class SonarPingView extends JFrame implements KeyListener
 		String s = "SensorArm" + Integer.toString(i);
 		SensorArm[i].setActionCommand(s);
 		SensorArm[i].removeActionListener(new btnListener());
+		//System.out.print("SENSOR DELETED");
+		sensorList[i] = "";
 		
 		String strdisarm = "SensorDisarm" + Integer.toString(i);
 		SensorDisarm[i].setActionCommand(strdisarm);
 		SensorDisarm[i].removeActionListener(new btnListener());
+		
+		/*String str;
+		
+		for (int k=0;k<MaxSensor;k++)
+		{
+			str = sensorList[k] + "  ";
+			System.out.print(str);
+		}
+		System.out.println();*/
+	}
+	
+	private void AddToArrayList(int i)
+	{
+		String str;
+		int k;
+		
+		sensorList[i] = "Sensor " + Integer.toString(i);
+		
+		java.util.Date date = new java.util.Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+		String formattedDate = sdf.format(date);
+		str = "Current sensolList situation at " + formattedDate +"\r\n";
+		System.out.print(str);
+		
+		
+		for (k=0;k<MaxSensor;k++)
+		{
+			str = "["+Integer.toString(k)+"]="+sensorList[k]+"; ";
+			System.out.print(str);
+		}
+		System.out.print("\r\n\r\n");
+	}
+	
+	private void RemoveFromArrayList(int i)
+	{
+		String str;
+		sensorList[i] = "";
+		
+		java.util.Date date = new java.util.Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+		String formattedDate = sdf.format(date);
+		str = "Current sensolList situation at " + formattedDate +"\r\n";
+		System.out.print(str);
+		
+		for (int k=0;k<MaxSensor;k++)
+		{
+			str = "["+Integer.toString(k)+"]="+sensorList[k]+"; ";
+			System.out.print(str);
+		}
+		System.out.print("\r\n\r\n");
 	}
 	
 	
@@ -457,70 +510,86 @@ public class SonarPingView extends JFrame implements KeyListener
 										
 				}
 				else if(e.getActionCommand().equals("SensorArm0"))
-				{		
+				{	
+					AddToArrayList(0);
 					SensorFlag[0].setBackground(Color.red);
 					SensorArm[0].setFocusable(false);
 				}
 				else if(e.getActionCommand().equals("SensorArm1"))
 				{		
+					AddToArrayList(1);
 					SensorFlag[1].setBackground(Color.red);
 					SensorArm[1].setFocusable(false);
 				}
 				else if(e.getActionCommand().equals("SensorArm2"))
 				{		
+					AddToArrayList(2);
 					SensorFlag[2].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm3"))
 				{		
+					AddToArrayList(3);
 					SensorFlag[3].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm4"))
 				{		
+					AddToArrayList(4);
 					SensorFlag[4].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm5"))
 				{		
+					AddToArrayList(5);
 					SensorFlag[5].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm6"))
 				{		
+					AddToArrayList(6);
 					SensorFlag[6].setBackground(Color.red);
 				}
 				else if(e.getActionCommand().equals("SensorArm7"))
 				{		
+					AddToArrayList(7);
 					SensorFlag[7].setBackground(Color.red);
 				}
 				
 				else if(e.getActionCommand().equals("SensorDisarm0"))
-				{		
+				{	
+					RemoveFromArrayList(0);
 					SensorFlag[0].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm1"))
-				{		
+				{	
+					RemoveFromArrayList(1);
 					SensorFlag[1].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm2"))
-				{		
+				{	
+					RemoveFromArrayList(2);
 					SensorFlag[2].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm3"))
-				{		
+				{	
+					RemoveFromArrayList(3);
 					SensorFlag[3].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm4"))
-				{		
+				{	
+					RemoveFromArrayList(4);
 					SensorFlag[4].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm5"))
-				{		
+				{	
+					RemoveFromArrayList(5);
 					SensorFlag[5].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm6"))
-				{		
+				{	
+					RemoveFromArrayList(6);
 					SensorFlag[6].setBackground(Color.green);
 				}
 				else if(e.getActionCommand().equals("SensorDisarm7"))
-				{		
+				{	
+					RemoveFromArrayList(7);
 					SensorFlag[7].setBackground(Color.green);
 				}
 				

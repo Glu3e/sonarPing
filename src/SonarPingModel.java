@@ -10,7 +10,7 @@ import gnu.io.SerialPortEventListener;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
- /**
+/**
  * This class deals with the sensor
  * @author Joshua, Keitha, Pyojoon
  * @version 2.0
@@ -23,7 +23,8 @@ public class SonarPingModel {
 	static BufferedReader input;
 	static OutputStream output;
 	public static boolean  disarmButtonPresses;
-	
+	public static String[] sensorList;
+
 	/**
 	 * This constructs a SonarPingModel
 	 * @param comPortName port which the sensor is pluged in
@@ -33,13 +34,13 @@ public class SonarPingModel {
 			//Identifying the port
 			this.basicPort = CommPortIdentifier.getPortIdentifier(comPortName);
 			this.port = (SerialPort) this.basicPort.open("", 1);
-			
+
 			//Port Settings
 			port.setSerialPortParams(9600, 
 					SerialPort.DATABITS_8, 
 					SerialPort.STOPBITS_1, 
 					SerialPort.PARITY_NONE);
-			
+
 			//Input and Output Streams to write to the port
 			output = port.getOutputStream();
 			input = new BufferedReader(new InputStreamReader(this.port.getInputStream()));
@@ -48,21 +49,21 @@ public class SonarPingModel {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * This is method deals with connection
 	 * @param x
 	 */
 	//Switching between the added event listener
 	public void toggle(int x){
-		
+
 		if(x == 1){
 			this.createConnection();
 		}else if(x == 0){
 			this.breakConnection();
 		}
 	}
-	
+
 	/**
 	 * This method adds the event listener
 	 */
@@ -71,12 +72,12 @@ public class SonarPingModel {
 			this.port.addEventListener(new Serial());
 			this.port.notifyOnDataAvailable(true);
 		}
-		
+
 		catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * This method removes the event listener
 	 */
@@ -84,12 +85,12 @@ public class SonarPingModel {
 		try{
 			this.port.removeEventListener();
 		}
-		
+
 		catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * This class deals with the alarm, when the alarm happens, it will send a email 
 	 * @author Joshua 
@@ -99,42 +100,49 @@ public class SonarPingModel {
 
 		public synchronized void serialEvent(SerialPortEvent event) {
 			try{
-				
+
 				// On the Arrivial of a new Value
 				// Create a new SonarPingEmailModel as a new Thread and run it 
 				if(event.getNewValue()){
-					
-					
-						try{
-							String x = input.readLine();
-							//Please Remove after testing
-							if(!disarmButtonPresses){
-								if(x.equals("Motion Comming From Main Door!")){
+
+
+					try{
+						String x = input.readLine();
+						//Please Remove after testing
+						if(!disarmButtonPresses){
+
+							for(int runner = 0; runner < sensorList.length - 1;runner++){
+								if(x.equals(sensorList[runner])){
 									MongoModel model = new MongoModel();
 									String emails = model.getAllEmails();
 									//model.detached();
 									model = null;
-									
-									SonarPingEmailModel runner = new SonarPingEmailModel(emails, 
+
+									SonarPingEmailModel shoutOutClass = new SonarPingEmailModel(emails, 
 											"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
-									runner.sessionInitialize();
-									runner.run();
-									
+									shoutOutClass.sessionInitialize();
+									shoutOutClass.run();
 								}
-							}else{
-								//Please Remove after testing
-								disarmButtonPresses = false;
 							}
+
+//							if(x.equals("Sensor 0")){
+//								
+//
+//							}
+						}else{
+							//Please Remove after testing
+							disarmButtonPresses = false;
 						}
-						
-					
-					
+					}
+
+
+
 					catch(Exception ex){
 						ex.printStackTrace();
 					}
-	
+
 				}
-				
+
 			}catch(Exception ex){
 				ex.printStackTrace();
 			}
