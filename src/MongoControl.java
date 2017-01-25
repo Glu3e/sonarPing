@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 /**
  * This is the class which is between the MongMVC and MongoControl, implements information verification etc.
  * @author Zhaoduan, Ekwere, Keitha
@@ -39,9 +39,9 @@ public class MongoControl {
 	 * This method validate the firstName, lastName, password and email which input from View
 	 * @return if pass the validation, return true, otherwise return false
 	 */
-	public Boolean validate()
+	public boolean validate()
 	{
-		Boolean rt=false;
+		boolean rt=false;
 		String EMAIL_REGEX = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
 		String EmailText;
 		
@@ -91,6 +91,7 @@ public class MongoControl {
 		{		
 			rt = true;
 		}
+		
 		return rt;
 	}
 	
@@ -120,7 +121,7 @@ public class MongoControl {
 			String str;
 			int dialogreturn;
 			String key, value;
-			Boolean ret;
+			boolean ret;
 			
 			firstName = theView.getFirstName();
 			lastName = theView.getLastName();

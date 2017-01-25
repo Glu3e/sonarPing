@@ -11,7 +11,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 /**
  * This class implement a view which interacts with the users
  * @author Zhaoduan, Akanimoh, Keitha
@@ -76,7 +76,7 @@ public class MongoView extends JFrame{
 		
 		
 		dbTableView.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-		    @Override
+		    //@Override
 		    public void valueChanged(ListSelectionEvent event) 
 		    {
 		    	
@@ -113,49 +113,49 @@ public class MongoView extends JFrame{
 		
 		panelCenter = new JPanel();
 		panelCenter.setLayout(new GridBagLayout());		
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		panelCenter.add(firstNameLabel,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		panelCenter.add(firstName,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		panelCenter.add(lastNameLabel,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 1;
-		panelCenter.add(lastName,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		panelCenter.add(EmailLabel,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 2;
-		panelCenter.add(email,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 3;		
-		panelCenter.add(PasswordLabel,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 3;	
-		panelCenter.add(password,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 4;
-		panelCenter.add(userType,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 4;
-		panelCenter.add(type,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 5;
-		panelCenter.add(createButton,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 5;		
-		panelCenter.add(deleteButton,gbc);
-		gbc.gridx = 2;
-		gbc.gridy = 5;		
-		panelCenter.add(updateButton,gbc);
-		gbc.gridx = 3;
-		gbc.gridy = 5;		
-		panelCenter.add(browseButton,gbc);	
+		GridBagConstraints gridBagLayoutObject = new GridBagConstraints();
+		gridBagLayoutObject.gridx = 0;
+		gridBagLayoutObject.gridy = 0;
+		panelCenter.add(firstNameLabel,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 1;
+		gridBagLayoutObject.gridy = 0;
+		panelCenter.add(firstName,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 0;
+		gridBagLayoutObject.gridy = 1;
+		panelCenter.add(lastNameLabel,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 1;
+		gridBagLayoutObject.gridy = 1;
+		panelCenter.add(lastName,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 0;
+		gridBagLayoutObject.gridy = 2;
+		panelCenter.add(EmailLabel,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 1;
+		gridBagLayoutObject.gridy = 2;
+		panelCenter.add(email,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 0;
+		gridBagLayoutObject.gridy = 3;		
+		panelCenter.add(PasswordLabel,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 1;
+		gridBagLayoutObject.gridy = 3;	
+		panelCenter.add(password,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 0;
+		gridBagLayoutObject.gridy = 4;
+		panelCenter.add(userType,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 1;
+		gridBagLayoutObject.gridy = 4;
+		panelCenter.add(type,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 0;
+		gridBagLayoutObject.gridy = 5;
+		panelCenter.add(createButton,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 1;
+		gridBagLayoutObject.gridy = 5;		
+		panelCenter.add(deleteButton,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 2;
+		gridBagLayoutObject.gridy = 5;		
+		panelCenter.add(updateButton,gridBagLayoutObject);
+		gridBagLayoutObject.gridx = 3;
+		gridBagLayoutObject.gridy = 5;		
+		panelCenter.add(browseButton,gridBagLayoutObject);	
 		
 		setVisible(true);
 		panelMain.add("Center",panelCenter);

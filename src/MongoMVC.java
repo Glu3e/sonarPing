@@ -1,5 +1,5 @@
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 
 /**
  * This is the class which puts View, Model and Control Class together
