@@ -9,5 +9,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="sonarPing"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Jupiter/Downloads/opencv/build/java/opencv-300.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
