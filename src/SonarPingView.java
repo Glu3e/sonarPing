@@ -29,7 +29,7 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
 
 
 /**
@@ -465,7 +465,7 @@ public class SonarPingView extends JFrame implements KeyListener
 		String strAuthor;
 		int pubYear;
 		
-		@Override
+		//@Override
 		public void actionPerformed(ActionEvent e) 
 		{
 			try

@@ -5,10 +5,8 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import static java.lang.System.out;
-
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 /**
  * This class implements the log in functionality
  * @author Zhaoduan, Ekwere, Keitha
@@ -36,33 +34,33 @@ public class MyLoginDialog extends JDialog {
         super(parent, "SonarPing Login", true);
         //
         JPanel panel = new JPanel(new GridBagLayout());
-        GridBagConstraints cs = new GridBagConstraints();
+        GridBagConstraints gridBagLayoutObject = new GridBagConstraints();
  
-        cs.fill = GridBagConstraints.HORIZONTAL;
+        gridBagLayoutObject.fill = GridBagConstraints.HORIZONTAL;
  
         lbUsername = new JLabel("Username: ");
-        cs.gridx = 0;
-        cs.gridy = 0;
-        cs.gridwidth = 1;
-        panel.add(lbUsername, cs);
+        gridBagLayoutObject.gridx = 0;
+        gridBagLayoutObject.gridy = 0;
+        gridBagLayoutObject.gridwidth = 1;
+        panel.add(lbUsername, gridBagLayoutObject);
  
         tfUsername = new JTextField(20);
-        cs.gridx = 1;
-        cs.gridy = 0;
-        cs.gridwidth = 2;
-        panel.add(tfUsername, cs);
+        gridBagLayoutObject.gridx = 1;
+        gridBagLayoutObject.gridy = 0;
+        gridBagLayoutObject.gridwidth = 2;
+        panel.add(tfUsername, gridBagLayoutObject);
  
         lbPassword = new JLabel("Password: ");
-        cs.gridx = 0;
-        cs.gridy = 1;
-        cs.gridwidth = 1;
-        panel.add(lbPassword, cs);
+        gridBagLayoutObject.gridx = 0;
+        gridBagLayoutObject.gridy = 1;
+        gridBagLayoutObject.gridwidth = 1;
+        panel.add(lbPassword, gridBagLayoutObject);
  
         pfPassword = new JPasswordField(20);
-        cs.gridx = 1;
-        cs.gridy = 1;
-        cs.gridwidth = 2;
-        panel.add(pfPassword, cs);
+        gridBagLayoutObject.gridx = 1;
+        gridBagLayoutObject.gridy = 1;
+        gridBagLayoutObject.gridwidth = 2;
+        panel.add(pfPassword, gridBagLayoutObject);
         panel.setBorder(new LineBorder(Color.GRAY));
         pfPassword.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent e){
