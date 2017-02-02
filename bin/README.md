@@ -1,2 +1,0 @@
-# sonarPing
-Simple Security System
