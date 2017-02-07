@@ -3,9 +3,9 @@
 	<classpathentry excluding="src/" kind="src" path=""/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Jupiter/Downloads/javax.mail-1.5.0.jar/javax.mail-1.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Jupiter/Downloads/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Jupiter/Downloads/mongo-java-driver-2.12.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Jupiter/Downloads/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rahman/Documents/Software_Engineering_Technology/Software_Project_2_(COMP_313)/Jar_Files/javax.mail-1.5.0.jar/javax.mail-1.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rahman/Documents/Software_Engineering_Technology/Software_Project_2_(COMP_313)/Jar_Files/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rahman/Documents/Software_Engineering_Technology/Software_Project_2_(COMP_313)/Jar_Files/mongo-java-driver-2.12.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rahman/Documents/Software_Engineering_Technology/Software_Project_2_(COMP_313)/Jar_Files/junit-4.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
