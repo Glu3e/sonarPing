@@ -13,7 +13,7 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 
-public class VideoTesting {
+public class CameraTesting {
 	public static void main(String [] args){
 		System.out.print("Hello World");
 		

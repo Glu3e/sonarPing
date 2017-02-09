@@ -80,11 +80,11 @@ public class SonarPingModel {
 						if(x.equals("Motion Comming From Main Door!")){
 							
 							
-							VideoTesting securityCamera = new VideoTesting();
+							CameraTesting securityCamera = new CameraTesting();
 							securityCamera.snap();
 							
 							
-							SonarPingEmailModel runner = new SonarPingEmailModel("joshua.l99.c@gmail.com", 
+							SonarPingEmailModel runner = new SonarPingEmailModel("monju760@gmail.com,kandrade.kca@gmail.com,sabbirkhan647@gmail.com,aconstantole@gmail.com", 
 									"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
 							runner.sessionInitialize();
 							runner.run();
