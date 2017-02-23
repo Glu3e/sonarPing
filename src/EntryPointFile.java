@@ -11,8 +11,6 @@ import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 
-import org.junit.Test;
-//import static org.junit.Assert.assertEquals;
 
 /**
  * This class tests the connection of Sensor
@@ -32,7 +30,7 @@ public class EntryPointFile {
 
 		try{
 
-			SonarPingModel spm = new SonarPingModel("COM3");
+			SonarPingModel spm = new SonarPingModel("/dev/cu.usbmodemFA131");
 			Scanner in = new Scanner(System.in);
 			while(true){
 				System.out.print("Enter 1 or 0:");

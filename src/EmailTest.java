@@ -17,8 +17,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 // Using the WIFI
 
-import org.junit.Test;
-//import static org.junit.Assert.assertEquals;
+
 
 
 /**
@@ -37,7 +36,7 @@ public class EmailTest {
 	public static void main(String [] args){
 
 		// Recipient's email ID needs to be mentioned.
-		String to = "tpotm9@gmail.com, dannywang0619@gmail.com";
+		String to = "kandrade.kca@gmail.com";
 
 		// Sender's email ID needs to be mentioned
 		String from = "john.orion.ray@gmail.com";

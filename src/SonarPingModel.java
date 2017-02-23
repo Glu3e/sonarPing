@@ -7,9 +7,6 @@ import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 
-import org.junit.Test;
-//import static org.junit.Assert.assertEquals;
-
 /**
  * This class deals with the sensor
  * @author Joshua, Keitha, Pyojoon
