@@ -66,6 +66,7 @@
           </execution>
         </executions>
         <configuration>
+        <addClasspath>true</addClasspath>
           <mainClass>DriveUpload</mainClass>
           <systemProperties>
             <systemProperty>
@@ -129,11 +130,6 @@
       <groupId>com.google.oauth-client</groupId>
       <artifactId>google-oauth-client-jetty</artifactId>
       <version>${project.oauth.version}</version>
-    </dependency>
-    <dependency>
-    	<groupId>com.google</groupId>
-    	<artifactId>sonarPing</artifactId>
-    	<version>1.19.0</version>
     </dependency>
   </dependencies>
   <properties>

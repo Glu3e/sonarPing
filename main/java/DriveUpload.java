@@ -42,7 +42,7 @@ import java.util.Collections;
 public class DriveUpload {
 	//specify the name of the app and where the media to upload will be
 	private static final String APPLICATION_NAME = "sonarPing";
-	private static final String UPLOAD_PATH ="/Desktop/720p.mov";
+	private static final String UPLOAD_PATH ="/Users/kevincornejoandrade/Desktop/DriveTestDownload/fairytale-image-test.png";
 	private static final java.io.File UPLOAD_FILE = new java.io.File(UPLOAD_PATH);
 	
 	  /** Directory to store user credentials. */
