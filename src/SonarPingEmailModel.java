@@ -15,6 +15,13 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+
+/**
+ * This class deals with the sending email 
+ * @author Joshua, Pyojoon
+ * @version 2.0
+ * @since 2016-01-10
+ */
 public class SonarPingEmailModel implements Runnable {
 	private String to;
 	private String from;
@@ -24,6 +31,13 @@ public class SonarPingEmailModel implements Runnable {
 	private Properties props;
 	private Session session;
 
+	/**
+	 * This constructs a SonarPingEmailModel
+	 * @param to		email to
+	 * @param from		email from
+	 * @param username	user name who sends the email
+	 * @param password  password which relates with the user name
+	 */
 	public SonarPingEmailModel(String to, String from, String username, String password){
 		this.to = to;
 		this.from = from;
@@ -37,6 +51,9 @@ public class SonarPingEmailModel implements Runnable {
 		this.props.put("mail.smtp.port", "587");
 	}
 	
+	/**
+	 * This method initialize a session
+	 */
 	public void sessionInitialize(){
 		// Get the Session object.
 		session = Session.getInstance(props, new javax.mail.Authenticator() {
@@ -46,6 +63,9 @@ public class SonarPingEmailModel implements Runnable {
 		});
 	}
 
+	/**
+	 * This method deals with sending a email 
+	 */
 	public void run(){
 		try {
 			
@@ -55,7 +75,6 @@ public class SonarPingEmailModel implements Runnable {
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(to));
 			message.setSubject("Testing Subject");
-			
 			
 			BodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart.setText("Attached is the video recording");
@@ -75,7 +94,10 @@ public class SonarPingEmailModel implements Runnable {
 		    multiPartMessage.addBodyPart(messageBodyPart);
 		    
 		    message.setContent(multiPartMessage);
-			
+
+			// Now set the actual message
+			message.setText("HEELO EVERYBODY, THIS IS GOING TO BE THE FINAL TEST FROM SONARPINGMODEL.");
+
 			// Send message
 			Transport.send(message);
 

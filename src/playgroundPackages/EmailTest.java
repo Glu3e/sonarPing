@@ -16,23 +16,25 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+// Using the WIFI
+
+
+
+
+/**
+ * This class tests the email functionality
+ * @author Joshua, Pyojoon
+ * @version 1.0
+ * @since 2016-02-18
+ */
 
 public class EmailTest {
+
+	/**
+	 * This method is the driver to test the email functionality
+	 * @param args
+	 */
 	public static void main(String [] args){
-		/*System.out.println("Hello");
-
-		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-
-		VideoCapture cap = new VideoCapture(0);
-
-
-		Mat m = new Mat(5, 10, CvType.CV_8UC1, new Scalar(0));
-		    System.out.println("OpenCV Mat: " + m);
-		    Mat mr1 = m.row(1);
-		    mr1.setTo(new Scalar(1));
-		    Mat mc5 = m.col(5);
-		    mc5.setTo(new Scalar(5));
-		    System.out.println("OpenCV Mat data:\n" + m.dump());*/
 
 		// Recipient's email ID needs to be mentioned.
 		String to = "kandrade.kca@gmail.com";
