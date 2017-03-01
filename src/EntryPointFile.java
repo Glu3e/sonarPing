@@ -28,22 +28,26 @@ public class EntryPointFile {
 		System.out.println("Testing With RXTX");
 
 
-		try{
-
-			SonarPingModel spm = new SonarPingModel("/dev/cu.usbmodemFA131");
-			Scanner in = new Scanner(System.in);
-			while(true){
-				System.out.print("Enter 1 or 0:");
-				String x = in.nextLine();
-				spm.toggle(Integer.parseInt(x));
-				
-			}
-		}
-
-		catch(Exception ex){
-			
-			ex.printStackTrace();
-		}
+//		try{
+//
+//			SonarPingModel spm = new SonarPingModel("/dev/cu.usbmodemFA131");
+//			Scanner in = new Scanner(System.in);
+//			while(true){
+//				System.out.print("Enter 1 or 0:");
+//				String x = in.nextLine();
+//				spm.toggle(Integer.parseInt(x));
+//				
+//			}
+//		}
+//
+//		catch(Exception ex){
+//			
+//			ex.printStackTrace();
+//		}
+		
+		 SonarPingModel model = new SonarPingModel("COM3");	
+		 SonarPingView view = new SonarPingView();
+		 SonarPingController controller = new SonarPingController(model, view,null);
 
 
 

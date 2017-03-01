@@ -14,8 +14,6 @@ import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
-
 import java.awt.*;
 import java.awt.Window.*;
 import java.awt.event.ActionEvent;
@@ -113,13 +111,13 @@ public class SonarPingView extends JFrame implements KeyListener
 	{
 		configureItem = new JMenuItem("Configure");
 		configureItem.setToolTipText("Configure Data");
-		configureItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				MongoMVC mongo = new MongoMVC();
-				mongo.main(null);
-			}
-		});
+//		configureItem.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				MongoMVC mongo = new MongoMVC();
+//				mongo.main(null);
+//			}
+//		});
 		
 		menuDecleration = new JMenu("File");		
 		menuDecleration.add(configureItem);
@@ -464,7 +462,7 @@ public class SonarPingView extends JFrame implements KeyListener
 		String strAuthor;
 		int pubYear;
 		
-		@Override
+		
 		public void actionPerformed(ActionEvent e) 
 		{
 			try
