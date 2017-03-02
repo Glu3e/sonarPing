@@ -104,9 +104,9 @@ public class SonarPingModel {
 							String x = input.readLine();
 							if(x.equals("Motion Comming From Main Door!")){
 								
-								
-								CameraTesting securityCamera = new CameraTesting();
-								securityCamera.snap();
+								//taken out until mac configuration made
+								//CameraTesting securityCamera = new CameraTesting();
+								//securityCamera.snap();
 								
 								
 								SonarPingEmailModel runner = new SonarPingEmailModel("monju760@gmail.com,kandrade.kca@gmail.com,sabbirkhan647@gmail.com,aconstantole@gmail.com", 

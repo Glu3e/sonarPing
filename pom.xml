@@ -66,11 +66,11 @@
           </execution>
         </executions>
         <configuration>
-<<<<<<< HEAD
+
         <addClasspath>true</addClasspath>
-=======
+
             <addClasspath>true</addClasspath>
->>>>>>> origin/JoshuaWindows
+
           <mainClass>DriveUpload</mainClass>
           <systemProperties>
             <systemProperty>

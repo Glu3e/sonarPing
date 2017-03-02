@@ -45,7 +45,7 @@ public class EntryPointFile {
 //			ex.printStackTrace();
 //		}
 		
-		 SonarPingModel model = new SonarPingModel("COM3");	
+		 SonarPingModel model = new SonarPingModel("/dev/tty.usbmodemFD121");	
 		 SonarPingView view = new SonarPingView();
 		 SonarPingController controller = new SonarPingController(model, view,null);
 
