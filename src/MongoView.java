@@ -11,7 +11,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 /**
  * This class implement a view which interacts with the users
  * @author Zhaoduan, Akanimoh, Keitha
@@ -76,7 +76,7 @@ public class MongoView extends JFrame{
 		
 		
 		dbTableView.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-		    @Override
+		    //@Override
 		    public void valueChanged(ListSelectionEvent event) 
 		    {
 		    	

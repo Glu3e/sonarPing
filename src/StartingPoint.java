@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
 
 
 /**

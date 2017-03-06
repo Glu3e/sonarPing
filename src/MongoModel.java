@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import com.mongodb.*;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 /**
  * This class deals with the all the requests related with Mongo Database
  * @author Zhaoduan, Akanimoh, Keitha
