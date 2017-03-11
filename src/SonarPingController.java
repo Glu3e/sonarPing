@@ -4,8 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
-import org.junit.Test;
-//import static org.junit.Assert.assertEquals;
+
 
 /**
  * This class implements SonarPingController which links the Model, EmailModel, and View

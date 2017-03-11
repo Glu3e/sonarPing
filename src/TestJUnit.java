@@ -2,6 +2,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 /**
  * This is the class for the integration test
  * @author Zhaoduan
