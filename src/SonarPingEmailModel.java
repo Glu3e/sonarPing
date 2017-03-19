@@ -84,8 +84,9 @@ public class SonarPingEmailModel implements Runnable {
 			Multipart multiPartMessage = new MimeMultipart();
 			multiPartMessage.addBodyPart(messageBodyPart);
 			
-			messageBodyPart = new MimeBodyPart();
 			String fileName = "./pictures/cam.png";
+			messageBodyPart = new MimeBodyPart();
+			
 			
 			DataSource fileDataSource = new FileDataSource(fileName);
 			
@@ -96,7 +97,7 @@ public class SonarPingEmailModel implements Runnable {
 		    message.setContent(multiPartMessage);
 
 			// Now set the actual message
-			message.setText("HEELO EVERYBODY, THIS IS GOING TO BE THE FINAL TEST FROM SONARPINGMODEL.");
+			//message.setText("HEELO EVERYBODY, THIS IS GOING TO BE THE FINAL TEST FROM SONARPINGMODEL.");
 
 			// Send message
 			Transport.send(message);
