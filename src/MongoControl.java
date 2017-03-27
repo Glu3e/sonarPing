@@ -91,7 +91,6 @@ public class MongoControl {
 		{		
 			rt = true;
 		}
-		
 		return rt;
 	}
 	

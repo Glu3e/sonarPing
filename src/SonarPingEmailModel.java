@@ -1,14 +1,20 @@
 import java.util.Properties;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
-import org.junit.Test;
-//import static org.junit.Assert.assertEquals;
 
 /**
  * This class deals with the sending email 
@@ -62,21 +68,36 @@ public class SonarPingEmailModel implements Runnable {
 	 */
 	public void run(){
 		try {
+			
 			// Create a default MimeMessage object.
 			Message message = new MimeMessage(session);
-
-			// Set From: header field of the header.
 			message.setFrom(new InternetAddress(from));
-
-			// Set To: header field of the header.
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(to));
-
-			// Set Subject: header field
 			message.setSubject("Testing Subject");
+			
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart.setText("Attached is the video recording");
+			
+			
+			
+			Multipart multiPartMessage = new MimeMultipart();
+			multiPartMessage.addBodyPart(messageBodyPart);
+			
+			String fileName = "./pictures/cam.png";
+			messageBodyPart = new MimeBodyPart();
+			
+			
+			DataSource fileDataSource = new FileDataSource(fileName);
+			
+			messageBodyPart.setDataHandler(new DataHandler(fileDataSource));
+		    messageBodyPart.setFileName(fileName);
+		    multiPartMessage.addBodyPart(messageBodyPart);
+		    
+		    message.setContent(multiPartMessage);
 
 			// Now set the actual message
-			message.setText("HEELO EVERYBODY, THIS IS GOING TO BE THE FINAL TEST FROM SONARPINGMODEL.");
+			//message.setText("HEELO EVERYBODY, THIS IS GOING TO BE THE FINAL TEST FROM SONARPINGMODEL.");
 
 			// Send message
 			Transport.send(message);
