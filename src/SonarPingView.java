@@ -1,8 +1,4 @@
 //import java.awt.BorderLayout;
-import java.awt.Color;
-
-//import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -14,6 +10,7 @@ import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+//import java.awt.GridBagLayout;
 import java.awt.*;
 import java.awt.Window.*;
 import java.awt.event.ActionEvent;
@@ -57,7 +54,8 @@ public class SonarPingView extends JFrame implements KeyListener
 	private JPanel armPanel;
 	private JPanel disarmPanel;
 	private JPanel main;
-		
+	private JPanel mongoViewPanel;	
+	
 	JPanel colorPanel;
 	JButton ArmJButton;
 	JButton DisarmJButton;
@@ -88,7 +86,9 @@ public class SonarPingView extends JFrame implements KeyListener
 	{
 		Init();
 		buildMainPanel();
-		buildTabPane();
+		buildMongoPanel();
+		buildTabPane("Operation Panel", panelMain);
+		buildTabPane("MVC Panel", mongoViewPanel);
 		if(MyLoginDialog.homeowner)
 		{
 			//JOptionPane.showMessageDialog(null,"homeowner is true.");
@@ -271,12 +271,44 @@ public class SonarPingView extends JFrame implements KeyListener
 	}
 	
 	/**
+	 * This method builds panel for MongoMVC
+	 */
+	public void buildMongoPanel()
+	{
+		
+		MongoView mongoMVC = new MongoView();
+		//String[] args = new String[] {"123"};
+		//MongoMVC.main(args);
+		
+		mongoViewPanel = new JPanel();
+		
+		this.setSize(600,680);
+		this.setResizable(false);
+		this.setTitle("Users Information Management");
+		mongoViewPanel.setLayout(new BorderLayout());
+		this.add(mongoViewPanel);
+		
+		//mongoMVC.buildViewPanel();
+		mongoViewPanel.add("North",mongoMVC.panelView);
+		
+		panelCenter = new JPanel();
+		panelCenter.setLayout(new GridBagLayout());		
+		mongoMVC.buildMongoGBC(panelCenter);
+		
+		setVisible(true);
+		mongoViewPanel.add("Center",panelCenter);
+		
+		MongoModel theModel = new MongoModel();
+		MongoControl theControl = new MongoControl(mongoMVC, theModel);
+	}
+	
+	/**
 	 * This method builds tab pane
 	 */
-	public void buildTabPane()
+	public void buildTabPane(String tabName, JPanel panel)
 	{
 		//tabPane.add("First Panel", panelView);
-		tabPane.add("Operation Panel", panelMain);	
+		tabPane.add(tabName, panel);	
 		add(tabPane);
 	}
 	
