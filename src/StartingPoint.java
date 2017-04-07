@@ -26,19 +26,19 @@ public class StartingPoint
         final JFrame frame = new JFrame("");
         final JButton btnLogin = new JButton("");        
 
-        MyLoginDialog loginDlg = new MyLoginDialog(frame);
-        loginDlg.setVisible(true);
-        // if logon successfully
-        if(loginDlg.isSucceeded())
-        {
-        	 btnLogin.setText("Hi " + loginDlg.getUsername() + "!");
-        }
-        else
-        {
-        	 btnLogin.setText("Sorry your user/password are not match!");
-        	 System.exit(0);
-        }
-		
+//        MyLoginDialog loginDlg = new MyLoginDialog(frame);
+//        loginDlg.setVisible(true);
+//        // if logon successfully
+//        if(loginDlg.isSucceeded())
+//        {
+//        	 btnLogin.setText("Hi " + loginDlg.getUsername() + "!");
+//        }
+//        else
+//        {
+//        	 btnLogin.setText("Sorry your user/password are not match!");
+//        	 System.exit(0);
+//        }
+//		
         
         SonarPingModel model = new SonarPingModel("COM3");	
 		SonarPingView view = new SonarPingView();
