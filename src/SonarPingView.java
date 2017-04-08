@@ -87,7 +87,7 @@ public class SonarPingView extends JFrame implements KeyListener
 	Color color3 = new Color(12, 13, 67);
 	*/Color color4 = new Color(54, 56, 92);
 	Color color5 = new Color(1, 2, 20);
-	Color color6 = new Color(4, 6, 42, 120);
+	Color color6 = new Color(24, 26, 62);
 	Color color7 = new Color(160, 162, 180);
 	
 	Color color1 = new Color(39, 47, 81, 217);
@@ -260,13 +260,13 @@ public class SonarPingView extends JFrame implements KeyListener
 		//ArmJButton.setIcon(i);
 		//ArmJButton.setSelectedIcon(i);
 		ArmJButton.setBackground(color6);
-		ArmJButton.setForeground(Color.lightGray);
+		ArmJButton.setForeground(Color.red);
 
 		armPanel.add(ArmJButton);
 
 		DisarmJButton = new JButton("Disarm");
 		DisarmJButton.setBackground(color6);
-		DisarmJButton.setForeground(Color.lightGray);
+		DisarmJButton.setForeground(Color.green);
 		disarmPanel.add(DisarmJButton);
 		
 		main.add(colorPanel);
@@ -368,7 +368,7 @@ public class SonarPingView extends JFrame implements KeyListener
 	{		
 		// TODO Auto-generated method stub	
 		int i;
-		Color color6 = new Color(4, 6, 42, 120);
+		Color color6 = new Color(24, 26, 62);
 
 		//MyUI ui = new MyUI();
 		for(i=0;i<MaxSensor;i++)
@@ -377,10 +377,10 @@ public class SonarPingView extends JFrame implements KeyListener
 			SensorFlag[i] = new JTextField("    SENSOR   "+Integer.toString(i)+"    ");
 			SensorArm[i] = new JButton("ARM("+Integer.toString(i)+")");
 			SensorArm[i].setBackground(color6);
-			SensorArm[i].setForeground(Color.lightGray);
+			SensorArm[i].setForeground(Color.red);
 			SensorDisarm[i] = new JButton("DISARM("+Integer.toString(i)+")");
 			SensorDisarm[i].setBackground(color6);
-			SensorDisarm[i].setForeground(Color.lightGray);
+			SensorDisarm[i].setForeground(Color.green);
 			sensorList[i]="";
 		}
 		sensorList[0] = "Sensor " + Integer.toString(0);
