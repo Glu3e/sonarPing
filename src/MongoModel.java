@@ -1,10 +1,12 @@
 /*
  * Fix: delete and update function
  */
+import java.awt.Color;
 import java.net.UnknownHostException;
 
 
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import com.mongodb.*;
 
@@ -23,6 +25,9 @@ public class MongoModel
 	private static DBCollection dBCollection;
 	private static BasicDBObject basicDBObject;
 	
+	Color color1 = new Color(139, 147, 181);
+	Color color6 = new Color(24, 26, 62);
+
 	/**
 	 * This constructs MongoModel
 	 */
@@ -74,10 +79,17 @@ public class MongoModel
 			this.basicDBObject.append("Type",type);
 			this.dBCollection.insert(new DBObject[] {basicDBObject});
 			detached();
+			//UIManager UI=new UIManager();
+			UIManager.put("OptionPane.background", color1);
+			UIManager.put("Panel.background", color1);
+			UIManager.put("Button.background", color6);
+			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null, "Record Inserted Successfully");
+			
 		}
 		
 		catch(Exception ex){
+			
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
 		
@@ -94,11 +106,16 @@ public class MongoModel
 			initialize();
 			this.basicDBObject.put("First Name", identifier);
 			this.dBCollection.remove(basicDBObject);
+			UIManager.put("OptionPane.background", color1);
+			UIManager.put("Panel.background", color1);
+			UIManager.put("Button.background", color6);
+			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null, "Record Deleted Successfully");
 			detached();
 		}
 		
 		catch(Exception ex){
+
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
 	}
@@ -129,13 +146,18 @@ public class MongoModel
 			this.basicDBObject.append("Type",type);
 			
 			this.dBCollection.insert(new DBObject[] {basicDBObject});
-			
+			UIManager.put("OptionPane.background", color1);
+			UIManager.put("Panel.background", color1);
+			UIManager.put("Button.background", color6);
+			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null, "Record Updated Successfully");
 			
 			detached();
 		}
 		
 		catch(Exception ex){
+			//UIManager.put("OptionPane.background", color1);
+			 //UIManager.put("Panel.background", color1);
 			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
 	}

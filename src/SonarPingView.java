@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.plaf.ColorUIResource;
 
 //import java.awt.GridBagLayout;
 import java.awt.*;
@@ -23,6 +24,8 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
+import com.sun.javafx.scene.control.skin.ColorPalette;
+import java.awt.Color;
 
 
 
@@ -77,7 +80,20 @@ public class SonarPingView extends JFrame implements KeyListener
 	//public static JLabel[] SensorFlag = new JLabel[MaxSensor];
 	public static JTextField[] SensorFlag = new JTextField[MaxSensor];
 	public static String [] sensorList = new String[MaxSensor];
+	//MongoView mongoMVC = new MongoView();
+
+	/*Color color1 = new Color(58, 61, 126);
+	Color color2 = new Color(30, 33, 95);
+	Color color3 = new Color(12, 13, 67);
+	*/Color color4 = new Color(54, 56, 92);
+	Color color5 = new Color(1, 2, 20);
+	Color color6 = new Color(4, 6, 42, 120);
+	Color color7 = new Color(160, 162, 180);
 	
+	Color color1 = new Color(39, 47, 81, 217);
+	Color color2 = new Color(30, 37, 72, 180);
+	Color color3 = new Color(22, 28, 57,130);
+
 	
 	/**
 	 * This constructs a SonarPingView
@@ -98,7 +114,7 @@ public class SonarPingView extends JFrame implements KeyListener
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(640,680);
 		setVisible(true);
-
+		getContentPane().setBackground(color4);
 		addKeyListener(this);
 		setFocusable(true);
 	    setFocusTraversalKeysEnabled(false);
@@ -222,18 +238,35 @@ public class SonarPingView extends JFrame implements KeyListener
 	public void buildSouthPanel()
 	{
 		armPanel = new JPanel(new GridLayout(1,1));
+		//armPanel.setBackground(color6);
+		
 		disarmPanel = new JPanel(new GridLayout(1,1));
 		
 		colorPanel = new JPanel();
+		colorPanel.setBackground(color7);
 		menuBar = new JMenuBar();
+		//menuBar.setBackground(color1);
+		//menuBar.setForeground(color1);
+
 		
 		main = new JPanel();
 		main.setLayout(new GridLayout(1,3));
+		//main.setBackground(color1);
+		//main.setForeground(color4);
+
+		//Icon i=new ImageIcon("button.png");
 		
-		ArmJButton = new JButton("Arm"); 
+		ArmJButton = new JButton("Arm");
+		//ArmJButton.setIcon(i);
+		//ArmJButton.setSelectedIcon(i);
+		ArmJButton.setBackground(color6);
+		ArmJButton.setForeground(Color.lightGray);
+
 		armPanel.add(ArmJButton);
 
-		DisarmJButton = new JButton("Disarm"); 
+		DisarmJButton = new JButton("Disarm");
+		DisarmJButton.setBackground(color6);
+		DisarmJButton.setForeground(Color.lightGray);
 		disarmPanel.add(DisarmJButton);
 		
 		main.add(colorPanel);
@@ -249,14 +282,18 @@ public class SonarPingView extends JFrame implements KeyListener
 	{			
 		panelMain = new JPanel();
 		panelMain.setSize(680,480);
-		panelMain.setLayout(new BorderLayout());		
+		panelMain.setLayout(new BorderLayout());
+		//panelMain.setBackground(Color.black);
+		//panelMain.setForeground(Color.black);
 		panelNorth = new JPanel();
 		panelNorth.setLayout(new FlowLayout());
+		panelNorth.setBackground(color1);
 		buildNorthPanel();
 		panelMain.add("South",panelNorth);
 		
 		panelCenter = new JPanel();
-		panelCenter.setLayout(new GridBagLayout());		
+		panelCenter.setLayout(new GridBagLayout());
+		panelCenter.setBackground(color1);
 		buildCenterPanel();
 		panelMain.add("Center",panelCenter);
 		
@@ -277,24 +314,33 @@ public class SonarPingView extends JFrame implements KeyListener
 	{
 		
 		MongoView mongoMVC = new MongoView();
+//		MongoView mongoMVC2 = new MongoView();
+
 		//String[] args = new String[] {"123"};
 		//MongoMVC.main(args);
-		
+		//mongoMVC.getContentPane().setBackground(color4);
+
 		mongoViewPanel = new JPanel();
-		
+		mongoViewPanel.setBackground(color1);
 		this.setSize(600,680);
 		this.setResizable(false);
 		this.setTitle("Users Information Management");
+		//this.getContentPane().setBackground(color4);
+
 		mongoViewPanel.setLayout(new BorderLayout());
 		this.add(mongoViewPanel);
-		
-		//mongoMVC.buildViewPanel();
+		mongoMVC.getContentPane().setBackground(color4);
+
+		mongoMVC.buildViewPanel();
+		mongoMVC.getContentPane().setBackground(color4);
+		//mongoMVC.panelView.setBackground(color1);
 		mongoViewPanel.add("North",mongoMVC.panelView);
 		
 		panelCenter = new JPanel();
+		panelCenter.setBackground(color1);
+		//panelCenter.setForeground(Color.lightGray);
 		panelCenter.setLayout(new GridBagLayout());		
 		mongoMVC.buildMongoGBC(panelCenter);
-		
 		setVisible(true);
 		mongoViewPanel.add("Center",panelCenter);
 		
@@ -308,6 +354,8 @@ public class SonarPingView extends JFrame implements KeyListener
 	public void buildTabPane(String tabName, JPanel panel)
 	{
 		//tabPane.add("First Panel", panelView);
+		tabPane.setBackground(color7);
+		tabPane.setForeground(color2);
 		tabPane.add(tabName, panel);	
 		add(tabPane);
 	}
@@ -320,14 +368,19 @@ public class SonarPingView extends JFrame implements KeyListener
 	{		
 		// TODO Auto-generated method stub	
 		int i;
-		
+		Color color6 = new Color(4, 6, 42, 120);
+
 		//MyUI ui = new MyUI();
 		for(i=0;i<MaxSensor;i++)
 		{
 			//SensorFlag[i] = new JLabel("Status"+Integer.toString(i));
 			SensorFlag[i] = new JTextField("    SENSOR   "+Integer.toString(i)+"    ");
 			SensorArm[i] = new JButton("ARM("+Integer.toString(i)+")");
+			SensorArm[i].setBackground(color6);
+			SensorArm[i].setForeground(Color.lightGray);
 			SensorDisarm[i] = new JButton("DISARM("+Integer.toString(i)+")");
+			SensorDisarm[i].setBackground(color6);
+			SensorDisarm[i].setForeground(Color.lightGray);
 			sensorList[i]="";
 		}
 		sensorList[0] = "Sensor " + Integer.toString(0);
