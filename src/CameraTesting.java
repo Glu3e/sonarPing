@@ -71,7 +71,7 @@ public class CameraTesting {
 
 	public void snap(){
 		System.out.print("Hello Camera");
-		System.loadLibrary("opencv_java300");
+		System.loadLibrary("opencv-249");
 		
 		VideoCapture capture = new VideoCapture(0);
 		
@@ -92,7 +92,7 @@ public class CameraTesting {
 		capture.retrieve(frameCapture);
 
 		
-		
+	
   		 System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
          VideoCapture camera = new VideoCapture(0);
          if(!camera.isOpened()) {

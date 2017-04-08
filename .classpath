@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/sonarPing/OO7-master/OO7-master/opencv-2.4.9 dll/java/x64"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/openCV"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/openCV">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Jar Files/OO7-master/OO7-master/opencv-2.4.9 dll/java/x64"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="C:/Jar Files/javax.mail-1.5.0.jar/javax.mail-1.5.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Jar Files/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar">
 		<attributes>
@@ -12,5 +20,10 @@
 	<classpathentry exported="true" kind="lib" path="C:/Jar Files/opencv-300.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Jar Files/mongo-java-driver-2.12.3.jar"/>
 	<classpathentry kind="lib" path="C:/Jar Files/junit-4.10.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Jar Files/OO7-master/OO7-master/opencv-2.4.9 dll/java/opencv-249.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Jar Files/OO7-master/OO7-master/opencv-2.4.9 dll/java/x64"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

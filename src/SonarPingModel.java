@@ -101,7 +101,10 @@ public class SonarPingModel {
 				// Create a new SonarPingEmailModel as a new Thread and run it 
 				if(event.getNewValue()){
 					try{
-							String x = input.readLine();
+						
+						String x="Motion Comming From Main Door!";
+						
+							//String x = input.readLine();
 							if(x.equals("Motion Comming From Main Door!")){
 								
 								
