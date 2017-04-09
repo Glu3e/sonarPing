@@ -19,6 +19,10 @@ import org.junit.Test;
  * @version 2.0
  * @since 2016-03-10
  */
+/* From Jason Pearson
+ * Copy code from these new comments from the Diffs in Github
+ * -of each change I did - starting with MongoView class
+ */
 public class MongoView extends JFrame{
 	
 	private JLabel useridLabel = new JLabel("UserID: ");
@@ -53,7 +57,8 @@ public class MongoView extends JFrame{
 	public JScrollPane srlpaneView;
 	public JTable dbTableView;
 	public DefaultTableModel tblmodelView;
-	
+	//----------------------------------Copy from here
+	//Custom colors for the color scheme
 	Color color4 = new Color(54, 56, 92);
 	Color color5 = new Color(1, 2, 20);
 	Color color6 = new Color(24, 26, 62);
@@ -62,6 +67,8 @@ public class MongoView extends JFrame{
 	Color color1 = new Color(79, 87, 121);
 	Color color2 = new Color(30, 37, 72, 180);
 	Color color3 = new Color(22, 28, 57,130);
+	//----------------------------------to here
+
 	/**
 	 * This method build View Panel
 	 */
@@ -70,11 +77,11 @@ public class MongoView extends JFrame{
 		panelView = new JPanel();
 		panelView.setLayout(new BorderLayout());
 		//panelView.setBackground(color1);
-
+		//----------------------------------Copy from here
 		btnView1 = new JButton("Refresh");
 		btnView1.setBackground(color6);
 		btnView1.setForeground(Color.lightGray);
-		
+		//----------------------------------to here
 		panelView.add("South",btnView1);
 		
 		Object[] columns = {"FirstName", "LastName", "Email", "Password", "Type"/*, "Id"*/};
@@ -84,9 +91,10 @@ public class MongoView extends JFrame{
 		
 		dbTableView = new JTable(tblmodelView);
 		//dbTableView.getcomp
+		//----------------------------------Copy from here
 		dbTableView.setBackground(color1);
 		dbTableView.setForeground(Color.lightGray);
-		
+		//----------------------------------to here
 		
 		srlpaneView = new JScrollPane(dbTableView);
 		//srlpaneView.setBackground(Color.black);
@@ -110,7 +118,7 @@ public class MongoView extends JFrame{
 		//panelView.getContentPane().setBackground(color4);
 		//dbTableView.getContentPane().setBackground(color4);
 		//((RootPaneContainer) srlpaneView).getContentPane().setBackground(color4);
-		this.getContentPane().setBackground(color4);
+		this.getContentPane().setBackground(color4); // you could copy this change but I don't think it does anything
 
 	}	
 	
@@ -123,21 +131,24 @@ public class MongoView extends JFrame{
 		panelMain = new JPanel();
 		this.setSize(600,680);
 		this.setResizable(false);
-		this.getContentPane().setBackground(color3);
+		this.getContentPane().setBackground(color3); //this one as well
 		this.setTitle("Users Information Management");
 		panelMain.setLayout(new BorderLayout());
+		//----------------------------------Copy from here
 		panelMain.setBackground(color1);
 		getContentPane().add(panelMain);
-		//change panelMain BorderLAyout to another layout so I can chnage Refresh button width and add Browse button next to it
+		//----------------------------------to here
 		buildViewPanel();
 		panelMain.add("North",panelView);
 		
 		panelCenter = new JPanel();
 		panelCenter.setLayout(new GridBagLayout());
-		panelCenter.setBackground(color1);
-		buildMongoGBC(panelCenter);	//chnage gridbag unit lengths so that the buttons are longer in width and spaced out from the text fields a bit 
+		panelCenter.setBackground(color1);// copy this change
+		//(1)Took all the GridbagContraints and put them into their own method (taking in panelCenter as an argument)
+		//I also changed GridBag unit-lengths so that the buttons are longer in width and spaced out from the text fields a bit
+		buildMongoGBC(panelCenter);//<-	 (1)
 		
-		//setVisible(true);
+		//setVisible(true); //<-- make sure to comment this out or make it false otherwise you'll have a second MongoView window pop-up
 		panelMain.add("Center",panelCenter);
 		
 		
@@ -145,9 +156,12 @@ public class MongoView extends JFrame{
 	
 	/**
 	 * For SonarPingView - in buildMongoPanel method - to build gridbag contraints for MongoView
+	 *----------------------------------Copy from here
 	 */
-	public void buildMongoGBC(JPanel panelCenter)
+	public void buildMongoGBC(JPanel panelCenter)//<-- (1)
 	{
+		//(1) I changed things here in having multiple GBC class references to implement each label, textfield, and button
+		//- because working with Scenebuilder it wouldn't parse the code when passing into a single (gbc) reference variable
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.insets = new Insets(0, 0, 5, 5);
 		GridBagConstraints gbc2 = new GridBagConstraints();
@@ -239,7 +253,8 @@ public class MongoView extends JFrame{
 		gbc11.gridy = 4;
 		panelCenter.add(type,gbc11);
 	}
-	
+	//----------------------------------to here
+
 	/**
 	 * This method gets firstname
 	 * @return firstname
@@ -299,8 +314,10 @@ public class MongoView extends JFrame{
 		updateButton.addActionListener(listenForButton);	
 		browseButton.setActionCommand("browseButton");
 		browseButton.addActionListener(listenForButton);
+		//----------------------------------Copy from here
 		btnView1.setActionCommand("browseButton");
 		btnView1.addActionListener(listenForButton);
+		//----------------------------------to here
 	}
 	
 	/**
@@ -309,8 +326,10 @@ public class MongoView extends JFrame{
 	 */
 	void displayErrorMessage(String errorMessage)
 	{
+		//----------------------------------Copy from here
 		UIManager.put("OptionPane.background", color5);
 		UIManager.put("Panel.background", color5);
+		//----------------------------------to here
 		JOptionPane.showMessageDialog(this, errorMessage);
 	}
 }

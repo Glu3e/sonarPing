@@ -12,7 +12,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="C:/Jar Files/javax.mail-1.5.0.jar/javax.mail-1.5.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Jar Files/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Jar Files/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar" sourcepath="C:/Jar Files/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="sonarPing"/>
 		</attributes>

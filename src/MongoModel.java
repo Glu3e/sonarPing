@@ -24,10 +24,10 @@ public class MongoModel
 	private static DB dB;
 	private static DBCollection dBCollection;
 	private static BasicDBObject basicDBObject;
-	
+	//----------------------------------Copy from here - for color scheme
 	Color color1 = new Color(139, 147, 181);
 	Color color6 = new Color(24, 26, 62);
-
+	//----------------------------------to here
 	/**
 	 * This constructs MongoModel
 	 */
@@ -79,11 +79,12 @@ public class MongoModel
 			this.basicDBObject.append("Type",type);
 			this.dBCollection.insert(new DBObject[] {basicDBObject});
 			detached();
-			//UIManager UI=new UIManager();
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null, "Record Inserted Successfully");
 			
 		}
@@ -106,10 +107,12 @@ public class MongoModel
 			initialize();
 			this.basicDBObject.put("First Name", identifier);
 			this.dBCollection.remove(basicDBObject);
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null, "Record Deleted Successfully");
 			detached();
 		}
@@ -146,10 +149,12 @@ public class MongoModel
 			this.basicDBObject.append("Type",type);
 			
 			this.dBCollection.insert(new DBObject[] {basicDBObject});
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null, "Record Updated Successfully");
 			
 			detached();

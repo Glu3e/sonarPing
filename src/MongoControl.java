@@ -23,9 +23,10 @@ public class MongoControl {
 	private String password;
 	private String email;
 	private String type;
-	
+	//----------------------------------Copy from here
 	Color color1 = new Color(160, 162, 180);
 	Color color6 = new Color(24, 26, 62);
+	//----------------------------------to here
 
 	/**
 	 * This constructs a MongoControl with a specified View and Model
@@ -52,37 +53,45 @@ public class MongoControl {
 		
 		if( theView.firstName.getText().isEmpty() ) 
 		{
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null,"You need to input first name!");
 			rt = false;
 		}
 		else if( theView.lastName.getText().isEmpty() ) 
 		{
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null,"You need to input last name!");
 			rt = false;
 		}
 		else if( theView.password.getText().isEmpty() ) 
 		{
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null,"You need to input password!");
 			rt = false;
 		}
 		else if( theView.email.getText().isEmpty() ) 
 		{
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null,"You need to input email!");
 			rt = false;
 			
@@ -94,29 +103,35 @@ public class MongoControl {
 				rt = true;
 			}
 			else {
+				//----------------------------------Copy from here
 				UIManager.put("OptionPane.background", color1);
 				UIManager.put("Panel.background", color1);
 				UIManager.put("Button.background", color6);
 				UIManager.put("Button.foreground", Color.lightGray);
+				//----------------------------------to here
 				JOptionPane.showMessageDialog(null,"You need to input a correct email!");
 				rt = false;
 			}
 		}
 		else if( theView.type.getText().isEmpty() ) 
 		{
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null,"You need to input type!");
 			rt = false;
 		}
 		else if ( !theView.type.getText().equals("DEPENDENT") )
 		{
+			//----------------------------------Copy from here
 			UIManager.put("OptionPane.background", color1);
 			UIManager.put("Panel.background", color1);
 			UIManager.put("Button.background", color6);
 			UIManager.put("Button.foreground", Color.lightGray);
+			//----------------------------------to here
 			JOptionPane.showMessageDialog(null,"You need to input type to be DEPENDENT!");
 			rt = false;
 		}
@@ -185,10 +200,12 @@ public class MongoControl {
 				else if(e.getActionCommand().equals("removeallButton"))
 				{
 					dialogreturn = theModel.removeallMongo();
+					//----------------------------------Copy from here
 					UIManager.put("OptionPane.background", color1);
 					UIManager.put("Panel.background", color1);
 					UIManager.put("Button.background", color6);
 					UIManager.put("Button.foreground", Color.lightGray);
+					//----------------------------------to here
 					JOptionPane.showMessageDialog(null,"Remove all the data in MongoDB");	
 				}				
 				

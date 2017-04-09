@@ -57,7 +57,7 @@ public class SonarPingView extends JFrame implements KeyListener
 	private JPanel armPanel;
 	private JPanel disarmPanel;
 	private JPanel main;
-	private JPanel mongoViewPanel;	
+	private JPanel mongoViewPanel;//made another JPanel to build the MongoView into the tabpane	
 	
 	JPanel colorPanel;
 	JButton ArmJButton;
@@ -85,7 +85,9 @@ public class SonarPingView extends JFrame implements KeyListener
 	/*Color color1 = new Color(58, 61, 126);
 	Color color2 = new Color(30, 33, 95);
 	Color color3 = new Color(12, 13, 67);
-	*/Color color4 = new Color(54, 56, 92);
+	*/
+	//----------------------------------Copy from here
+	Color color4 = new Color(54, 56, 92);
 	Color color5 = new Color(1, 2, 20);
 	Color color6 = new Color(24, 26, 62);
 	Color color7 = new Color(160, 162, 180);
@@ -93,7 +95,7 @@ public class SonarPingView extends JFrame implements KeyListener
 	Color color1 = new Color(39, 47, 81, 217);
 	Color color2 = new Color(30, 37, 72, 180);
 	Color color3 = new Color(22, 28, 57,130);
-
+	//----------------------------------to here
 	
 	/**
 	 * This constructs a SonarPingView
@@ -102,9 +104,11 @@ public class SonarPingView extends JFrame implements KeyListener
 	{
 		Init();
 		buildMainPanel();
+		//----------------------------------Copy from here
 		buildMongoPanel();
 		buildTabPane("Operation Panel", panelMain);
 		buildTabPane("MVC Panel", mongoViewPanel);
+		//----------------------------------to here
 		if(MyLoginDialog.homeowner)
 		{
 			//JOptionPane.showMessageDialog(null,"homeowner is true.");
@@ -114,7 +118,7 @@ public class SonarPingView extends JFrame implements KeyListener
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(640,680);
 		setVisible(true);
-		getContentPane().setBackground(color4);
+		getContentPane().setBackground(color4); //copy this change
 		addKeyListener(this);
 		setFocusable(true);
 	    setFocusTraversalKeysEnabled(false);
@@ -243,7 +247,7 @@ public class SonarPingView extends JFrame implements KeyListener
 		disarmPanel = new JPanel(new GridLayout(1,1));
 		
 		colorPanel = new JPanel();
-		colorPanel.setBackground(color7);
+		colorPanel.setBackground(color7); //copy this change
 		menuBar = new JMenuBar();
 		//menuBar.setBackground(color1);
 		//menuBar.setForeground(color1);
@@ -259,14 +263,18 @@ public class SonarPingView extends JFrame implements KeyListener
 		ArmJButton = new JButton("Arm");
 		//ArmJButton.setIcon(i);
 		//ArmJButton.setSelectedIcon(i);
+		//----------------------------------Copy from here
 		ArmJButton.setBackground(color6);
 		ArmJButton.setForeground(Color.red);
+		//----------------------------------to here
 
 		armPanel.add(ArmJButton);
 
 		DisarmJButton = new JButton("Disarm");
+		//----------------------------------Copy from here
 		DisarmJButton.setBackground(color6);
 		DisarmJButton.setForeground(Color.green);
+		//----------------------------------to here
 		disarmPanel.add(DisarmJButton);
 		
 		main.add(colorPanel);
@@ -287,7 +295,7 @@ public class SonarPingView extends JFrame implements KeyListener
 		//panelMain.setForeground(Color.black);
 		panelNorth = new JPanel();
 		panelNorth.setLayout(new FlowLayout());
-		panelNorth.setBackground(color1);
+		panelNorth.setBackground(color1); //copy this change
 		buildNorthPanel();
 		panelMain.add("South",panelNorth);
 		
@@ -309,6 +317,7 @@ public class SonarPingView extends JFrame implements KeyListener
 	
 	/**
 	 * This method builds panel for MongoMVC
+	 *----------------------------------Copy from here
 	 */
 	public void buildMongoPanel()
 	{
@@ -321,7 +330,7 @@ public class SonarPingView extends JFrame implements KeyListener
 		//mongoMVC.getContentPane().setBackground(color4);
 
 		mongoViewPanel = new JPanel();
-		mongoViewPanel.setBackground(color1);
+		mongoViewPanel.setBackground(color1);//change
 		this.setSize(600,680);
 		this.setResizable(false);
 		this.setTitle("Users Information Management");
@@ -329,10 +338,12 @@ public class SonarPingView extends JFrame implements KeyListener
 
 		mongoViewPanel.setLayout(new BorderLayout());
 		this.add(mongoViewPanel);
+		//----------------------------------Copy from here
 		mongoMVC.getContentPane().setBackground(color4);
 
 		mongoMVC.buildViewPanel();
 		mongoMVC.getContentPane().setBackground(color4);
+		//----------------------------------to here
 		//mongoMVC.panelView.setBackground(color1);
 		mongoViewPanel.add("North",mongoMVC.panelView);
 		
@@ -347,19 +358,24 @@ public class SonarPingView extends JFrame implements KeyListener
 		MongoModel theModel = new MongoModel();
 		MongoControl theControl = new MongoControl(mongoMVC, theModel);
 	}
-	
+	//----------------------------------to here
+
 	/**
 	 * This method builds tab pane
+	 * 	//----------------------------------Copy from here
 	 */
 	public void buildTabPane(String tabName, JPanel panel)
 	{
 		//tabPane.add("First Panel", panelView);
+		//----------------------------------Copy from here
 		tabPane.setBackground(color7);
 		tabPane.setForeground(color2);
+		//----------------------------------to here
 		tabPane.add(tabName, panel);	
 		add(tabPane);
 	}
-	
+	//----------------------------------to here
+
 	
 /**
  * This method inits the view
@@ -368,7 +384,7 @@ public class SonarPingView extends JFrame implements KeyListener
 	{		
 		// TODO Auto-generated method stub	
 		int i;
-		Color color6 = new Color(24, 26, 62);
+		Color color6 = new Color(24, 26, 62);//change
 
 		//MyUI ui = new MyUI();
 		for(i=0;i<MaxSensor;i++)
@@ -376,11 +392,15 @@ public class SonarPingView extends JFrame implements KeyListener
 			//SensorFlag[i] = new JLabel("Status"+Integer.toString(i));
 			SensorFlag[i] = new JTextField("    SENSOR   "+Integer.toString(i)+"    ");
 			SensorArm[i] = new JButton("ARM("+Integer.toString(i)+")");
+			//----------------------------------Copy from here
 			SensorArm[i].setBackground(color6);
 			SensorArm[i].setForeground(Color.red);
+			//----------------------------------to here
 			SensorDisarm[i] = new JButton("DISARM("+Integer.toString(i)+")");
+			//----------------------------------Copy from here
 			SensorDisarm[i].setBackground(color6);
 			SensorDisarm[i].setForeground(Color.green);
+			//----------------------------------to here
 			sensorList[i]="";
 		}
 		sensorList[0] = "Sensor " + Integer.toString(0);
