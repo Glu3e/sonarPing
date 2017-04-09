@@ -40,7 +40,7 @@ public class StartingPoint
 //        }
 //		
         
-        SonarPingModel model = new SonarPingModel("COM3");	
+        SonarPingModel model = new SonarPingModel("COM11");	
 		SonarPingView view = new SonarPingView();
 		SonarPingController controller = new SonarPingController(model, view,null);
 			
