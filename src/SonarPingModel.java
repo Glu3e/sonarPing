@@ -108,8 +108,13 @@ public class SonarPingModel {
 								CameraTesting securityCamera = new CameraTesting();
 								securityCamera.snap();
 								
+								MongoModel model = new MongoModel();
+								String emails = model.getAllEmails();
+								//model.detached();
+								model = null;
 								
-								SonarPingEmailModel runner = new SonarPingEmailModel("monju760@gmail.com,kandrade.kca@gmail.com,sabbirkhan647@gmail.com,aconstantole@gmail.com,hao.lac.at.centennial@gmail.com", 
+								
+								SonarPingEmailModel runner = new SonarPingEmailModel(emails, 
 										"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
 								runner.sessionInitialize();
 								runner.run();
