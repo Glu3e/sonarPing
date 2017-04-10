@@ -1,0 +1,16 @@
+[
+	{
+		"id":1,
+		"pointx": 0,
+		"pointy": 0,
+		"pointz": 0
+	},
+
+	{
+		"id":2,
+		"pointx": 1,
+		"pointy": 1,
+		"pointz": 1
+	}
+
+]
