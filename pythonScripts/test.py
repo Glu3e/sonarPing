@@ -14,7 +14,7 @@ for i in range(len(data)):
 	pprint(i)
 
 	mesh = bpy.data.meshes.new("Cube")
-	verts = [(data[i]['pointx'], data[i]['pointy'],data[i]['pointz'])]
+	verts = [(data[i]['pointx'], data[i]['pointy'],0)]
 
 	object = bpy.data.objects.new("Cube", mesh)
 
