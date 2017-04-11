@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
 
 
 /**
@@ -34,9 +34,10 @@ public class StartingPoint
 //        }
 		
         
-        SonarPingModel model = new SonarPingModel("COM3");	
+        SonarPingModel model = new SonarPingModel("COM11");	
 		SonarPingView view = new SonarPingView();
 		SonarPingController controller = new SonarPingController(model, view,null);
 			
 	}
 }
+

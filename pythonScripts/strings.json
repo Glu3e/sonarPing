@@ -1,0 +1,30 @@
+[
+	{
+		"id":1,
+		"pointx": 0,
+		"pointy": 0,
+		"pointz": 0
+	},
+
+	{
+		"id":2,
+		"pointx": 1,
+		"pointy": 1,
+		"pointz": 1
+	},
+
+	{
+		"id":3,
+		"pointx": 2,
+		"pointy": 2,
+		"pointz": 2
+	},
+
+	{
+		"id":4,
+		"pointx": 3,
+		"pointy": 3,
+		"pointz": 3
+	}
+
+]

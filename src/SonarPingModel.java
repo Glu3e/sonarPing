@@ -2,6 +2,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
+import com.sun.mail.handlers.text_html;
+
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
@@ -41,6 +48,7 @@ public class SonarPingModel {
 			//Input and Output Streams to write to the port
 			output = port.getOutputStream();
 			input = new BufferedReader(new InputStreamReader(this.port.getInputStream()));
+		
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
@@ -102,18 +110,25 @@ public class SonarPingModel {
 				if(event.getNewValue()){
 					try{
 							String x = input.readLine();
+							
+							
 							if(x.equals("Motion Comming From Main Door!")){
 								
 								//taken out until mac configuration made
 								//CameraTesting securityCamera = new CameraTesting();
 								//securityCamera.snap();
 								
+								MongoModel model = new MongoModel();
+								String emails = model.getAllEmails();
+								//model.detached();
+								model = null;
 								
-								SonarPingEmailModel runner = new SonarPingEmailModel("monju760@gmail.com,kandrade.kca@gmail.com,sabbirkhan647@gmail.com,aconstantole@gmail.com", 
+								
+								SonarPingEmailModel runner = new SonarPingEmailModel(emails, 
 										"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
 								runner.sessionInitialize();
 								runner.run();
-								}
+							}
 						}
 
 						catch(Exception ex){
@@ -132,30 +147,21 @@ public class SonarPingModel {
 			}
 
 
-			//TODO MAKE CHANGES HERE
-			//						//Please Remove after testing
-//							if(!disarmButtonPresses){
-//
-//								for(int runner = 0; runner < sensorList.length - 1;runner++){
-//									if(x.equals(sensorList[runner])){
-//										MongoModel model = new MongoModel();
-//										String emails = model.getAllEmails();
-//										//model.detached();
-//										model = null;
-//
-//										SonarPingEmailModel shoutOutClass = new SonarPingEmailModel(emails, 
-//												"john.orion.ray@gmail.com", "john.orion.ray@gmail.com", "phantom1237");
-//										shoutOutClass.sessionInitialize();
-//										shoutOutClass.run();
-//									}
-//								}
-//							}else{
-//								//Please Remove after testing
-//								disarmButtonPresses = false;
-//							}
-//						}
-
 		}
 	}
+	
+	public void writeNumber(String incommingNumber){
+		
+		try {
+			output.flush();
+			output.write(incommingNumber.getBytes());
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
   }
 

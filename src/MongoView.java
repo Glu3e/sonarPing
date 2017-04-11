@@ -9,9 +9,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ListSelectionEvent;  
 import javax.swing.event.ListSelectionListener;
-
+ import javax.swing.UIManager;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 /**
  * This class implement a view which interacts with the users
  * @author Zhaoduan, Akanimoh, Keitha
@@ -52,7 +52,14 @@ public class MongoView extends JFrame{
 	public JScrollPane srlpaneView;
 	public JTable dbTableView;
 	public DefaultTableModel tblmodelView;	
+ 	Color color4 = new Color(54, 56, 92);
+ 	Color color5 = new Color(1, 2, 20);
+ 	Color color6 = new Color(24, 26, 62);
+ 	Color color7 = new Color(1, 2, 20, 100);
 	
+ 	Color color1 = new Color(79, 87, 121);
+ 	Color color2 = new Color(30, 37, 72, 180);
+ 	Color color3 = new Color(22, 28, 57,130);
 	/**
 	 * This method build View Panel
 	 */
@@ -62,21 +69,23 @@ public class MongoView extends JFrame{
 		
 		panelView.setLayout(new BorderLayout());
 		btnView1 = new JButton("Reflesh");
+ 		btnView1.setBackground(color6);
+ 		btnView1.setForeground(Color.lightGray);
 		panelView.add("South",btnView1);
 		
 		Object[] columns = {"FirstName", "LastName", "Email", "Password", "Type"/*, "Id"*/};
 		tblmodelView = new DefaultTableModel();
 		tblmodelView.setColumnIdentifiers(columns);
 		dbTableView = new JTable(tblmodelView);
-		dbTableView.setBackground(Color.lightGray);
-		dbTableView.setForeground(Color.black);
+ 		dbTableView.setBackground(color1);
+ 		dbTableView.setForeground(Color.lightGray);
 		srlpaneView = new JScrollPane(dbTableView);
 				
 		panelView.add("North",srlpaneView);
 		
 		
 		dbTableView.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-		    @Override
+		    //@Override
 		    public void valueChanged(ListSelectionEvent event) 
 		    {
 		    	
@@ -91,6 +100,8 @@ public class MongoView extends JFrame{
 		    }
 		});		
 		
+		this.getContentPane().setBackground(color4);
+		this.getContentPane().setBackground(color4); // you could copy this change but I don't think it does anything
 		
 	}	
 	
@@ -104,61 +115,122 @@ public class MongoView extends JFrame{
 		
 		this.setSize(600,680);
 		this.setResizable(false);
+		this.getContentPane().setBackground(color3);
+		this.getContentPane().setBackground(color3); //this one as well
 		this.setTitle("Users Information Management");
 		panelMain.setLayout(new BorderLayout());
-		this.add(panelMain);
-		
+		//this.add(panelMain);
+		//panelMain.setBackground(color1);
+		getContentPane().add(panelMain);
 		buildViewPanel();
 		panelMain.add("North",panelView);
 		
 		panelCenter = new JPanel();
 		panelCenter.setLayout(new GridBagLayout());		
+		panelCenter.setBackground(color1);
+		buildMongoGBC(panelCenter);	//chnage gridbag unit lengths so that the buttons are longer in width and spaced out from the text fields a bit 
+	panelCenter.setBackground(color1);// copy this change
+	//(1)Took all the GridbagContraints and put them into their own method (taking in panelCenter as an argument)
+		//I also changed GridBag unit-lengths so that the buttons are longer in width and spaced out from the text fields a bit
+		buildMongoGBC(panelCenter);//<-	 (1)
+		//setVisible(true);
+		//setVisible(true); //<-- make sure to comment this out or make it false otherwise you'll have a second MongoView window pop-up
+ 		panelMain.add("Center",panelCenter);
+ 	}
+	public void buildMongoGBC(JPanel panelCenter)
+ 	{
+		//(1) I changed things here in having multiple GBC class references to implement each label, textfield, and button
+		//- because working with Scenebuilder it wouldn't parse the code when passing into a single (gbc) reference variable
 		GridBagConstraints gbc = new GridBagConstraints();
+ 		gbc.insets = new Insets(0, 0, 5, 5);
+ 		GridBagConstraints gbc2 = new GridBagConstraints();
+ 		gbc2.insets = new Insets(0, 0, 5, 5);
+ 		GridBagConstraints gbc3 = new GridBagConstraints();
+ 		gbc3.insets = new Insets(0, 0, 5, 5);
+ 		GridBagConstraints gbc4 = new GridBagConstraints();
+ 		gbc4.insets = new Insets(0, 0, 5, 5);
+ 		GridBagConstraints gbc5 = new GridBagConstraints();
+ 		gbc5.insets = new Insets(0, 0, 5, 5);
+ 		GridBagConstraints gbc6 = new GridBagConstraints();
+ 		gbc6.insets = new Insets(0, 0, 5, 5);
+ 		GridBagConstraints gbc7 = new GridBagConstraints();
+ 		gbc7.insets = new Insets(0, 0, 5, 5);
+ 		GridBagConstraints gbc8 = new GridBagConstraints();
+ 		gbc8.insets = new Insets(0, 0, 5, 5);
+ 		GridBagConstraints gbc9 = new GridBagConstraints();
+ 		gbc9.insets = new Insets(0, 0, 0, 5);
+ 		GridBagConstraints gbc11 = new GridBagConstraints();
+ 		gbc11.insets = new Insets(0, 0, 0, 5);
+ 		createButton.setBackground(color6);
+ 		createButton.setForeground(Color.lightGray);
+ 		updateButton.setBackground(color6);
+ 		updateButton.setForeground(Color.lightGray);
+ 		browseButton.setBackground(color6);
+ 		browseButton.setForeground(Color.lightGray);
+ 		deleteButton.setBackground(color6);
+ 		deleteButton.setForeground(Color.lightGray);
+ 		firstNameLabel.setForeground(Color.lightGray);
+ 		lastNameLabel.setForeground(Color.lightGray);
+ 		EmailLabel.setForeground(Color.lightGray);
+ 		PasswordLabel.setForeground(Color.lightGray);
+ 		userType.setForeground(Color.lightGray);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelCenter.add(firstNameLabel,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 0;
+ 		gbc2.gridx = 1;
+ 		gbc2.gridy = 0;
 		panelCenter.add(firstName,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		panelCenter.add(lastNameLabel,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 1;
-		panelCenter.add(lastName,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		panelCenter.add(EmailLabel,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 2;
-		panelCenter.add(email,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 3;		
-		panelCenter.add(PasswordLabel,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 3;	
-		panelCenter.add(password,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 4;
-		panelCenter.add(userType,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 4;
-		panelCenter.add(type,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 5;
-		panelCenter.add(createButton,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = 5;		
-		panelCenter.add(deleteButton,gbc);
-		gbc.gridx = 2;
-		gbc.gridy = 5;		
-		panelCenter.add(updateButton,gbc);
-		gbc.gridx = 3;
-		gbc.gridy = 5;		
-		panelCenter.add(browseButton,gbc);	
+ 		GridBagConstraints gbc12 = new GridBagConstraints();
+ 		gbc12.fill = GridBagConstraints.BOTH;
+ 		gbc12.insets = new Insets(0, 0, 5, 5);
+ 		gbc12.gridx = 3;
+ 		gbc12.gridy = 0;
+ 		panelCenter.add(createButton,gbc12);
+ 		gbc3.gridx = 0;
+ 		gbc3.gridy = 1;
+ 		panelCenter.add(lastNameLabel,gbc3);
+ 		gbc4.gridx = 1;
+ 		gbc4.gridy = 1;
+ 		panelCenter.add(lastName,gbc4);
+ 		GridBagConstraints gbc14 = new GridBagConstraints();
+ 		gbc14.fill = GridBagConstraints.BOTH;
+ 		gbc14.insets = new Insets(0, 0, 5, 5);
+ 		gbc14.gridx = 3;
+ 		gbc14.gridy = 1;		
+ 		panelCenter.add(updateButton,gbc14);
+ 		gbc5.gridx = 0;
+ 		gbc5.gridy = 2;
+ 		panelCenter.add(EmailLabel,gbc5);
+ 		gbc6.gridx = 1;
+ 		gbc6.gridy = 2;
+ 		panelCenter.add(email,gbc6);
+ 		GridBagConstraints gbc15 = new GridBagConstraints();
+ 		gbc15.fill = GridBagConstraints.BOTH;
+ 		gbc15.insets = new Insets(0, 0, 5, 5);
+ 		gbc15.gridx = 3;
+ 		gbc15.gridy = 2;		
+ 		panelCenter.add(browseButton,gbc15);
+ 		gbc7.gridx = 0;
+ 		gbc7.gridy = 3;		
+ 		panelCenter.add(PasswordLabel,gbc7);
+ 		gbc8.gridx = 1;
+ 		gbc8.gridy = 3;	
+ 		panelCenter.add(password,gbc8);
+ 		GridBagConstraints gbc13 = new GridBagConstraints();
+ 		gbc13.fill = GridBagConstraints.BOTH;
+ 		gbc13.insets = new Insets(0, 0, 5, 5);
+ 		gbc13.gridx = 3;
+ 		gbc13.gridy = 3;		
+ 		panelCenter.add(deleteButton,gbc13);
+ 		gbc9.gridx = 0;
+ 		gbc9.gridy = 4;
+ 		panelCenter.add(userType,gbc9);
+ 		gbc11.gridx = 1;
+ 		gbc11.gridy = 4;
+ 		panelCenter.add(type,gbc11);
 		
-		setVisible(true);
-		panelMain.add("Center",panelCenter);
+		//setVisible(true);
+		//panelMain.add("Center",panelCenter);
 		
 		
 	}
@@ -223,6 +295,8 @@ public class MongoView extends JFrame{
 		browseButton.setActionCommand("browseButton");
 		browseButton.addActionListener(listenForButton);	
 		
+ 		btnView1.setActionCommand("browseButton");
+ 		btnView1.addActionListener(listenForButton);
 	}
 	
 	/**
@@ -231,6 +305,8 @@ public class MongoView extends JFrame{
 	 */
 	void displayErrorMessage(String errorMessage)
 	{
+ 		UIManager.put("OptionPane.background", color5);
+ 		UIManager.put("Panel.background", color5);
 		JOptionPane.showMessageDialog(this, errorMessage);
 	}
 }

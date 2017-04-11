@@ -1,11 +1,12 @@
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
-
+ import javax.swing.UIManager;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 /**
  * This is the class which is between the MongMVC and MongoControl, implements information verification etc.
  * @author Zhaoduan, Ekwere, Keitha
@@ -22,6 +23,8 @@ public class MongoControl {
 	private String email;
 	private String type;
 	
+	Color color1 = new Color(160, 162, 180);
+ 	Color color6 = new Color(24, 26, 62);
 	/**
 	 * This constructs a MongoControl with a specified View and Model
 	 * @param theView
@@ -39,29 +42,45 @@ public class MongoControl {
 	 * This method validate the firstName, lastName, password and email which input from View
 	 * @return if pass the validation, return true, otherwise return false
 	 */
-	public Boolean validate()
+	public boolean validate()
 	{
-		Boolean rt=false;
+		boolean rt=false;
 		String EMAIL_REGEX = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
 		String EmailText;
 		
 		if( theView.firstName.getText().isEmpty() ) 
 		{
+			UIManager.put("OptionPane.background", color1);
+ 			UIManager.put("Panel.background", color1);
+ 			UIManager.put("Button.background", color6);
+ 			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null,"You need to input first name!");
 			rt = false;
 		}
 		else if( theView.lastName.getText().isEmpty() ) 
 		{
+			UIManager.put("OptionPane.background", color1);
+ 			UIManager.put("Panel.background", color1);
+ 			UIManager.put("Button.background", color6);
+ 			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null,"You need to input last name!");
 			rt = false;
 		}
 		else if( theView.password.getText().isEmpty() ) 
 		{
+			UIManager.put("OptionPane.background", color1);
+ 			UIManager.put("Panel.background", color1);
+ 			UIManager.put("Button.background", color6);
+ 			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null,"You need to input password!");
 			rt = false;
 		}
 		else if( theView.email.getText().isEmpty() ) 
 		{
+			UIManager.put("OptionPane.background", color1);
+ 			UIManager.put("Panel.background", color1);
+ 			UIManager.put("Button.background", color6);
+ 			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null,"You need to input email!");
 			rt = false;
 			
@@ -73,17 +92,29 @@ public class MongoControl {
 				rt = true;
 			}
 			else {
+				UIManager.put("OptionPane.background", color1);
+ 				UIManager.put("Panel.background", color1);
+ 				UIManager.put("Button.background", color6);
+ 				UIManager.put("Button.foreground", Color.lightGray);
 				JOptionPane.showMessageDialog(null,"You need to input a correct email!");
 				rt = false;
 			}
 		}
 		else if( theView.type.getText().isEmpty() ) 
 		{
+			UIManager.put("OptionPane.background", color1);
+ 			UIManager.put("Panel.background", color1);
+ 			UIManager.put("Button.background", color6);
+ 			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null,"You need to input type!");
 			rt = false;
 		}
 		else if ( !theView.type.getText().equals("DEPENDENT") )
 		{
+			UIManager.put("OptionPane.background", color1);
+ 			UIManager.put("Panel.background", color1);
+ 			UIManager.put("Button.background", color6);
+ 			UIManager.put("Button.foreground", Color.lightGray);
 			JOptionPane.showMessageDialog(null,"You need to input type to be DEPENDENT!");
 			rt = false;
 		}
@@ -120,7 +151,7 @@ public class MongoControl {
 			String str;
 			int dialogreturn;
 			String key, value;
-			Boolean ret;
+			boolean ret;
 			
 			firstName = theView.getFirstName();
 			lastName = theView.getLastName();
@@ -152,6 +183,10 @@ public class MongoControl {
 				else if(e.getActionCommand().equals("removeallButton"))
 				{
 					dialogreturn = theModel.removeallMongo();
+					UIManager.put("OptionPane.background", color1);
+ 					UIManager.put("Panel.background", color1);
+ 					UIManager.put("Button.background", color6);
+ 					UIManager.put("Button.foreground", Color.lightGray);
 					JOptionPane.showMessageDialog(null,"Remove all the data in MongoDB");	
 				}				
 				
